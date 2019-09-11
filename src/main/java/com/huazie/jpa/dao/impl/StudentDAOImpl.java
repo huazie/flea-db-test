@@ -1,12 +1,12 @@
 package com.huazie.jpa.dao.impl;
 
 import com.huazie.frame.common.util.ObjectUtils;
+import com.huazie.frame.common.util.StringUtils;
 import com.huazie.frame.db.common.exception.DaoException;
 import com.huazie.frame.db.jpa.common.FleaJPAQuery;
 import com.huazie.jpa.FleaJpaDAOImpl;
 import com.huazie.jpa.dao.interfaces.IStudentDAO;
 import com.huazie.jpa.entity.Student;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -43,15 +43,15 @@ public class StudentDAOImpl extends FleaJpaDAOImpl<Student> implements IStudentD
         FleaJPAQuery query = initQuery(name, sex, minAge, maxAge, Long.class);
         query.countDistinct();
         Object result = query.getSingleResult();
-        return (long)result;
+        return Long.parseLong(StringUtils.valueOf(result));
     }
 
-    private FleaJPAQuery initQuery(String name, Integer sex, Integer minAge, Integer maxAge, Class<?> result) throws DaoException{
+    private FleaJPAQuery initQuery(String name, Integer sex, Integer minAge, Integer maxAge, Class<?> result) throws DaoException {
         FleaJPAQuery query = getQuery(result);
 
         // 拼接 查询条件
         // 根据姓名 模糊查询, attrName 为 实体类 成员变量名，并非表字段名
-        if (StringUtils.isNotEmpty(name)) {
+        if (StringUtils.isNotBlank(name)) {
             query.like("stuName", name);
         }
 
