@@ -41,7 +41,7 @@ public class StudentDAOImpl extends FleaJpaDAOImpl<Student> implements IStudentD
     @SuppressWarnings(value = "unchecked")
     public long getStudentCount(String name, Integer sex, Integer minAge, Integer maxAge) throws DaoException {
         FleaJPAQuery query = initQuery(name, sex, minAge, maxAge, Long.class);
-        query.countDistinct();
+        query.count();
         Object result = query.getSingleResult();
         return Long.parseLong(StringUtils.valueOf(result));
     }
