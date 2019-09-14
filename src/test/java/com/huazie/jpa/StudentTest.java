@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+
 /**
  * <p>  </p>
  *
@@ -33,21 +35,21 @@ public class StudentTest {
         try {
             IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
             Student student = new Student();
-            student.setStuName("张三");
+            student.setStuName("张三3");
             student.setStuAge(18);
             student.setStuSex(1);
             student.setStuState(1);
             studentSV.save(student);
 
             student = new Student();
-            student.setStuName("李四");
+            student.setStuName("李四3");
             student.setStuAge(19);
             student.setStuSex(1);
             student.setStuState(1);
             studentSV.save(student);
 
             student = new Student();
-            student.setStuName("王二麻子");
+            student.setStuName("王二麻子3");
             student.setStuAge(20);
             student.setStuSex(1);
             student.setStuState(1);
@@ -95,12 +97,26 @@ public class StudentTest {
     }
 
     @Test
-    public void testStudentQuery() {
+    public void testStudentQueryPage() {
         try {
-            IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
 
+            IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
+            List<Student> studentList = studentSV.getStudentList("张三", 1, 18, 20, 1, 5);
+            LOGGER.debug("Student List = {}", studentList);
         } catch (Exception e) {
             LOGGER.error("Exception : ", e);
         }
     }
+
+    @Test
+    public void testStudentQueryCount() {
+        try {
+            IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
+            long count = studentSV.getStudentCount("张三", 1, 18, 20);
+            LOGGER.debug("Student Count = {}", count);
+        } catch (Exception e) {
+            LOGGER.error("Exception : ", e);
+        }
+    }
+
 }
