@@ -40,36 +40,15 @@ public class StudentDAOImpl extends FleaJpaDAOImpl<Student> implements IStudentD
     @Override
     @SuppressWarnings(value = "unchecked")
     public long getStudentCount(String name, Integer sex, Integer minAge, Integer maxAge) throws DaoException {
-        FleaJPAQuery query = initQuery(name, sex, minAge, maxAge, Long.class);
-        query.count();
-        Object result = query.getSingleResult();
+        Object result = initQuery(name, sex, minAge, maxAge, Long.class).count().getSingleResult();
         return Long.parseLong(StringUtils.valueOf(result));
     }
 
     private FleaJPAQuery initQuery(String name, Integer sex, Integer minAge, Integer maxAge, Class<?> result) throws DaoException {
-        FleaJPAQuery query = getQuery(result);
-
-        // 拼接 查询条件
-        // 根据姓名 模糊查询, attrName 为 实体类 成员变量名，并非表字段名
-        if (StringUtils.isNotBlank(name)) {
-            query.like("stuName", name);
-        }
-
-        // 查询性别
-        if (ObjectUtils.isNotEmpty(sex)) {
-            query.equal("stuSex", sex);
-        }
-
-        // 查询年龄范围
-        if (ObjectUtils.isNotEmpty(minAge)) {
-            // 大于等于
-            query.ge("stuAge", minAge);
-        }
-
-        if (ObjectUtils.isNotEmpty(maxAge)) {
-            // 小于等于
-            query.le("stuAge", maxAge);
-        }
-        return query;
+        return getQuery(result)
+                .like("stuName", name) // 根据姓名 模糊查询, attrName 为 实体类 成员变量名，并非表字段名
+                .equal("stuSex", sex) // 查询性别
+                .ge("stuAge", minAge) // 查询年龄范围 (大于等于)
+                .le("stuAge", maxAge); // 查询年龄范围 (小于等于)
     }
 }
