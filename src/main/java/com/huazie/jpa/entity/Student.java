@@ -23,7 +23,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "student")
-public class Student implements FleaEntity {
+public class Student extends FleaEntity {
 
     private static final long serialVersionUID = 1267943552214677159L;
 
