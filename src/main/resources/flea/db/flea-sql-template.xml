@@ -59,21 +59,21 @@
 			<!-- SET 子句 -->
 			<property key="sets" value="stu_name = :stuName, stu_age = :stuAge" />
 			<!-- WHERE 子句 -->
-			<property key="conditions" value="stu_id = :stuId" />
+			<property key="conditions" value="stu_name LIKE :sName AND stu_state = :stuState AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge" />
 		</param>
 		<param id="select" name="SQL模板參數" desc="用于定义SQL模板中的替换参数; 如需查询全部，则设置key=columns的属性值为 *，即可">
 			<!-- 表名 -->
 			<property key="table" value="student" />
 			<!-- SELECT 显示列 -->
 			<property key="columns" value="*" />
-			<!-- WHERE 子句 -->
-			<property key="conditions" value="stu_name like :stuName and stu_state = :stuState" />
+			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
+			<property key="conditions" value="stu_name LIKE :stuName AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge" />
 		</param>
 		<param id="delete" name="SQL模板參數" desc="用于定义SQL模板中的替换参数">
 			<!-- 表名 -->
 			<property key="table" value="student" />
 			<!-- WHERE 子句 -->
-			<property key="conditions" value="stu_id = :stuId" />
+			<property key="conditions" value="stu_name LIKE :stuName AND stu_state = :stuState AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge" />
 		</param>
 	</params>
 	<!-- SQL模板和模板参数关联关系配置（简称 SQL关系配置）-->
