@@ -16,7 +16,7 @@
 		</rule>
 	</rules>
 
-	<!-- SQL模板配置 -->
+	<!-- SQL模板定义配置 -->
 	<templates>
 		<template id="insert" ruleId="insert" name="INSERT SQL模板" desc="用于原生SQL中INSERT语句的使用">
 			<!-- SQL模板数据 -->
@@ -75,6 +75,22 @@
 			<!-- WHERE 子句 -->
 			<property key="conditions" value="stu_name LIKE :stuName AND stu_state = :stuState AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge" />
 		</param>
+		<param id="select_1" name="SQL模板參數" desc="用于定义SQL模板中的替换参数; 如需查询全部，则设置key=columns的属性值为 *，即可">
+			<!-- 表名 -->
+			<property key="table" value="student" />
+			<!-- SELECT 显示列 -->
+			<property key="columns" value="*" />
+			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
+			<property key="conditions" value="stu_name LIKE :stuName AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge ORDER BY stu_id DESC LIMIT :pageStart, :pageCount" />
+		</param>
+		<param id="select_2" name="SQL模板參數" desc="用于定义SQL模板中的替换参数; 如需查询全部，则设置key=columns的属性值为 *，即可">
+			<!-- 表名 -->
+			<property key="table" value="student" />
+			<!-- SELECT 显示列 -->
+			<property key="columns" value="count(stu_id)" />
+			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
+			<property key="conditions" value="stu_name LIKE :stuName AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge" />
+		</param>
 	</params>
 	<!-- SQL模板和模板参数关联关系配置（简称 SQL关系配置）-->
 	<relations>
@@ -87,6 +103,8 @@
 		<relation id="update" templateId="update" paramId="update" name="SQL关系"/>
 		<relation id="select" templateId="select" paramId="select" name="SQL关系"/>
 		<relation id="delete" templateId="delete" paramId="delete" name="SQL关系"/>
+		<relation id="select_1" templateId="select" paramId="select_1" name="SQL关系"/>
+		<relation id="select_2" templateId="select" paramId="select_2" name="SQL关系"/>
 	</relations>
 
 </sql>

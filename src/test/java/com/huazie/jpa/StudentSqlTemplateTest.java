@@ -12,6 +12,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>  </p>
  *
@@ -32,7 +35,7 @@ public class StudentSqlTemplateTest {
     }
 
     @Test
-    public void testInsertSqlTemplateFromJPA() throws Exception{
+    public void testInsertSqlTemplateFromJPA() throws Exception {
         IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
 
         Student student = new Student();
@@ -144,5 +147,69 @@ public class StudentSqlTemplateTest {
         student.put("maxAge", 40);
 
         LOGGER.debug("Result = {}", FleaJDBCHelper.delete("delete", student));
+    }
+
+    @Test
+    public void testQueryPageSqlTemplateFromJPA() throws Exception {
+        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
+
+        Student student = new Student();
+        student.setStuName("%张三%");
+        student.setStuSex(1);
+        student.put("minAge", 18);
+        student.put("maxAge", 20);
+        int pageNum = 1;   // 第一页
+        int pageCount = 5; // 每页5条记录
+        student.put("pageStart", (pageNum - 1) * pageCount);
+        student.put("pageCount", pageCount);
+
+        List<Student> studentList = studentSV.query("select_1", student);
+        LOGGER.debug("Student List = {}", studentList);
+        LOGGER.debug("Student Count = {}", studentList.size());
+    }
+
+    @Test
+    public void testQueryPageSqlTemplateFromJDBC() throws Exception {
+        FleaJDBCConfig.init(DBSystemEnum.MySQL.getName(), "fleajpatest");
+
+        Student student = new Student();
+        student.setStuName("%李四%");
+        student.setStuSex(1);
+        student.put("minAge", 18);
+        student.put("maxAge", 20);
+        int pageNum = 1;   // 第一页
+        int pageCount = 5; // 每页5条记录
+        student.put("pageStart", (pageNum - 1) * pageCount);
+        student.put("pageCount", pageCount);
+
+        List<Map<String, Object>> studentList = FleaJDBCHelper.query("select_1", student);
+        LOGGER.debug("Student List = {}", studentList);
+        LOGGER.debug("Student Count = {}", studentList.size());
+    }
+
+    @Test
+    public void testQueryCountSqlTemplateFromJPA() throws Exception {
+        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
+
+        Student student = new Student();
+        student.setStuName("%张三%");
+        student.setStuSex(1);
+        student.put("minAge", 18);
+        student.put("maxAge", 20);
+
+        LOGGER.debug("Student Count = {}", studentSV.querySingle("select_2", student, Long.class));
+    }
+
+    @Test
+    public void testQueryCountSqlTemplateFromJDBC() throws Exception {
+        FleaJDBCConfig.init(DBSystemEnum.MySQL.getName(), "fleajpatest");
+
+        Student student = new Student();
+        student.setStuName("%李四%");
+        student.setStuSex(1);
+        student.put("minAge", 18);
+        student.put("maxAge", 20);
+
+        LOGGER.debug("Student Count = {}", FleaJDBCHelper.querySingle("select_2", student));
     }
 }
