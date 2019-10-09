@@ -87,7 +87,7 @@
 			<!-- 表名 -->
 			<property key="table" value="student" />
 			<!-- SELECT 显示列 -->
-			<property key="columns" value="count(stu_id)" />
+			<property key="columns" value="count(*)" />
 			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
 			<property key="conditions" value="stu_name LIKE :stuName AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge" />
 		</param>

@@ -197,7 +197,7 @@ public class StudentSqlTemplateTest {
         student.put("minAge", 18);
         student.put("maxAge", 20);
 
-        LOGGER.debug("Student Count = {}", studentSV.querySingle("select_2", student, Long.class));
+        LOGGER.debug("Student Count = {}", studentSV.querySingle("select_2", student));
     }
 
     @Test
