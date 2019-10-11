@@ -212,4 +212,52 @@ public class StudentSqlTemplateTest {
 
         LOGGER.debug("Student Count = {}", FleaJDBCHelper.querySingle("select_2", student));
     }
+
+    @Test
+    public void testQuerySumSqlTemplateFromJPA() throws Exception {
+        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
+        LOGGER.debug("Student Age = {}", studentSV.querySingle("select_3", new Student()));
+    }
+
+    @Test
+    public void testQuerySumSqlTemplateFromJDBC() throws Exception {
+        FleaJDBCConfig.init(DBSystemEnum.MySQL.getName(), "fleajpatest");
+        LOGGER.debug("Student Age = {}", FleaJDBCHelper.querySingle("select_3", new Student()));
+    }
+
+    @Test
+    public void testQueryAvgSqlTemplateFromJPA() throws Exception {
+        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
+        LOGGER.debug("Student Age = {}", studentSV.querySingle("select_4", new Student()));
+    }
+
+    @Test
+    public void testQueryAvgSqlTemplateFromJDBC() throws Exception {
+        FleaJDBCConfig.init(DBSystemEnum.MySQL.getName(), "fleajpatest");
+        LOGGER.debug("Student Age = {}", FleaJDBCHelper.querySingle("select_4", new Student()));
+    }
+
+    @Test
+    public void testQueryMaxSqlTemplateFromJPA() throws Exception {
+        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
+        LOGGER.debug("Student Age = {}", studentSV.querySingle("select_5", new Student()));
+    }
+
+    @Test
+    public void testQueryMaxSqlTemplateFromJDBC() throws Exception {
+        FleaJDBCConfig.init(DBSystemEnum.MySQL.getName(), "fleajpatest");
+        LOGGER.debug("Student Age = {}", FleaJDBCHelper.querySingle("select_5", new Student()));
+    }
+
+    @Test
+    public void testQueryMinSqlTemplateFromJPA() throws Exception {
+        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
+        LOGGER.debug("Student Age = {}", studentSV.querySingle("select_6", new Student()));
+    }
+
+    @Test
+    public void testQueryMinSqlTemplateFromJDBC() throws Exception {
+        FleaJDBCConfig.init(DBSystemEnum.MySQL.getName(), "fleajpatest");
+        LOGGER.debug("Student Age = {}", FleaJDBCHelper.querySingle("select_6", new Student()));
+    }
 }

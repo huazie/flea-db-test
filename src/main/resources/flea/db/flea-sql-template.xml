@@ -91,6 +91,38 @@
 			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
 			<property key="conditions" value="stu_name LIKE :stuName AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge" />
 		</param>
+		<param id="select_3" name="SQL模板參數" desc="用于定义SQL模板中的替换参数; 如需查询全部，则设置key=columns的属性值为 *，即可">
+			<!-- 表名 -->
+			<property key="table" value="student" />
+			<!-- SELECT 显示列 -->
+			<property key="columns" value="sum(stu_age)" />
+			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
+			<property key="conditions" value="1=1" />
+		</param>
+		<param id="select_4" name="SQL模板參數" desc="用于定义SQL模板中的替换参数; 如需查询全部，则设置key=columns的属性值为 *，即可">
+			<!-- 表名 -->
+			<property key="table" value="student" />
+			<!-- SELECT 显示列 -->
+			<property key="columns" value="avg(stu_age)" />
+			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
+			<property key="conditions" value="1=1" />
+		</param>
+		<param id="select_5" name="SQL模板參數" desc="用于定义SQL模板中的替换参数; 如需查询全部，则设置key=columns的属性值为 *，即可">
+			<!-- 表名 -->
+			<property key="table" value="student" />
+			<!-- SELECT 显示列 -->
+			<property key="columns" value="max(stu_age)" />
+			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
+			<property key="conditions" value="1=1" />
+		</param>
+		<param id="select_6" name="SQL模板參數" desc="用于定义SQL模板中的替换参数; 如需查询全部，则设置key=columns的属性值为 *，即可">
+			<!-- 表名 -->
+			<property key="table" value="student" />
+			<!-- SELECT 显示列 -->
+			<property key="columns" value="min(stu_age)" />
+			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
+			<property key="conditions" value="1=1" />
+		</param>
 	</params>
 	<!-- SQL模板和模板参数关联关系配置（简称 SQL关系配置）-->
 	<relations>
@@ -105,6 +137,10 @@
 		<relation id="delete" templateId="delete" paramId="delete" name="SQL关系"/>
 		<relation id="select_1" templateId="select" paramId="select_1" name="SQL关系"/>
 		<relation id="select_2" templateId="select" paramId="select_2" name="SQL关系"/>
+		<relation id="select_3" templateId="select" paramId="select_3" name="SQL关系"/>
+		<relation id="select_4" templateId="select" paramId="select_4" name="SQL关系"/>
+		<relation id="select_5" templateId="select" paramId="select_5" name="SQL关系"/>
+		<relation id="select_6" templateId="select" paramId="select_6" name="SQL关系"/>
 	</relations>
 
 </sql>
