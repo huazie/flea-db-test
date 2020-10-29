@@ -1,11 +1,11 @@
 package com.huazie.jpa.service.impl;
 
-import com.huazie.frame.db.common.exception.DaoException;
+import com.huazie.frame.common.exception.CommonException;
+import com.huazie.frame.db.jpa.dao.interfaces.IAbstractFleaJPADAO;
+import com.huazie.frame.db.jpa.service.impl.AbstractFleaJPASVImpl;
 import com.huazie.jpa.dao.interfaces.IStudentDAO;
 import com.huazie.jpa.entity.Student;
 import com.huazie.jpa.service.interfaces.IStudentSV;
-import com.huazie.frame.db.jpa.dao.interfaces.IAbstractFleaJPADAO;
-import com.huazie.frame.db.jpa.service.impl.AbstractFleaJPASVImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -27,12 +27,12 @@ public class StudentSVImpl extends AbstractFleaJPASVImpl<Student> implements ISt
     private IStudentDAO studentDao;
 
     @Override
-    public List<Student> getStudentList(String name, Integer sex, Integer minAge, Integer maxAge, int pageNum, int pageCount) throws DaoException {
+    public List<Student> getStudentList(String name, Integer sex, Integer minAge, Integer maxAge, int pageNum, int pageCount) throws CommonException {
         return studentDao.getStudentList(name, sex, minAge, maxAge, pageNum, pageCount);
     }
 
     @Override
-    public long getStudentCount(String name, Integer sex, Integer minAge, Integer maxAge) throws DaoException {
+    public long getStudentCount(String name, Integer sex, Integer minAge, Integer maxAge) throws CommonException {
         return studentDao.getStudentCount(name, sex, minAge, maxAge);
     }
 

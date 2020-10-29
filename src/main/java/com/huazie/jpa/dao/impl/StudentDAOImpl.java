@@ -1,7 +1,7 @@
 package com.huazie.jpa.dao.impl;
 
+import com.huazie.frame.common.exception.CommonException;
 import com.huazie.frame.common.util.StringUtils;
-import com.huazie.frame.db.common.exception.DaoException;
 import com.huazie.frame.db.jpa.common.FleaJPAQuery;
 import com.huazie.jpa.FleaJpaDAOImpl;
 import com.huazie.jpa.dao.interfaces.IStudentDAO;
@@ -18,11 +18,11 @@ import java.util.List;
  * @since 1.0.0
  */
 @Repository("studentDAO")
+@SuppressWarnings(value = "unchecked")
 public class StudentDAOImpl extends FleaJpaDAOImpl<Student> implements IStudentDAO {
 
     @Override
-    @SuppressWarnings(value = "unchecked")
-    public List<Student> getStudentList(String name, Integer sex, Integer minAge, Integer maxAge, int pageNum, int pageCount) throws DaoException {
+    public List<Student> getStudentList(String name, Integer sex, Integer minAge, Integer maxAge, int pageNum, int pageCount) throws CommonException {
         FleaJPAQuery query = initQuery(name, sex, minAge, maxAge, null);
 
         List<Student> studentList;
@@ -37,13 +37,12 @@ public class StudentDAOImpl extends FleaJpaDAOImpl<Student> implements IStudentD
     }
 
     @Override
-    @SuppressWarnings(value = "unchecked")
-    public long getStudentCount(String name, Integer sex, Integer minAge, Integer maxAge) throws DaoException {
+    public long getStudentCount(String name, Integer sex, Integer minAge, Integer maxAge) throws CommonException {
         Object result = initQuery(name, sex, minAge, maxAge, Long.class).count().getSingleResult();
         return Long.parseLong(StringUtils.valueOf(result));
     }
 
-    private FleaJPAQuery initQuery(String name, Integer sex, Integer minAge, Integer maxAge, Class<?> result) throws DaoException {
+    private FleaJPAQuery initQuery(String name, Integer sex, Integer minAge, Integer maxAge, Class<?> result) throws CommonException {
         return getQuery(result)
                 .like("stuName", name) // 根据姓名 模糊查询, attrName 为 实体类 成员变量名，并非表字段名
                 .equal("stuSex", sex) // 查询性别

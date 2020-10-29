@@ -1,6 +1,5 @@
 package com.huazie.jpa;
 
-import com.huazie.frame.common.util.ObjectUtils;
 import com.huazie.frame.db.common.DBSystemEnum;
 import com.huazie.frame.db.jdbc.FleaJDBCHelper;
 import com.huazie.frame.db.jdbc.config.FleaJDBCConfig;

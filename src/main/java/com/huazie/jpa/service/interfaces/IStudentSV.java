@@ -1,8 +1,8 @@
 package com.huazie.jpa.service.interfaces;
 
-import com.huazie.frame.db.common.exception.DaoException;
-import com.huazie.jpa.entity.Student;
+import com.huazie.frame.common.exception.CommonException;
 import com.huazie.frame.db.jpa.service.interfaces.IAbstractFleaJPASV;
+import com.huazie.jpa.entity.Student;
 
 import java.util.List;
 
@@ -25,10 +25,10 @@ public interface IStudentSV extends IAbstractFleaJPASV<Student> {
      * @param pageNum   查询页
      * @param pageCount 每页总数
      * @return 学生信息列表
-     * @throws DaoException 数据操作层异常
+     * @throws CommonException 通用异常
      * @since 1.0.0
      */
-    List<Student> getStudentList(String name, Integer sex, Integer minAge, Integer maxAge, int pageNum, int pageCount) throws DaoException;
+    List<Student> getStudentList(String name, Integer sex, Integer minAge, Integer maxAge, int pageNum, int pageCount) throws CommonException;
 
     /**
      * <p> 学生总数 </p>
@@ -38,9 +38,9 @@ public interface IStudentSV extends IAbstractFleaJPASV<Student> {
      * @param minAge 最小年龄
      * @param maxAge 最大年龄
      * @return 学生总数
-     * @throws DaoException 数据操作层异常
+     * @throws CommonException 通用异常
      * @since 1.0.0
      */
-    long getStudentCount(String name, Integer sex, Integer minAge, Integer maxAge) throws DaoException;
+    long getStudentCount(String name, Integer sex, Integer minAge, Integer maxAge) throws CommonException;
 
 }
