@@ -18,7 +18,7 @@ import java.util.List;
 public class FleaJpaDAOImpl<T> extends AbstractFleaJPADAOImpl<T> {
 
     @PersistenceContext(unitName="fleajpa")
-    protected EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     @Transactional("fleaJpaTransactionManager")

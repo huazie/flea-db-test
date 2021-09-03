@@ -14,7 +14,7 @@
     </config-items>
 
     <config-items key="flea-jpa" desc="Flea JPA配置">
-        <config-item key="table_split_handler" desc="Flea JPA分表处理者实现类">com.huazie.frame.db.jpa.persistence.impl.EclipseLinkTableSplitHandler</config-item>
+        <config-item key="flea_split_handler" desc="Flea JPA分表处理者实现类">com.huazie.frame.db.jpa.eclipselink.EclipseLinkLibTableSplitHandler</config-item>
     </config-items>
 
     <config-items key="mysql-fleajpatest" desc="JDBC数据库配置【key=数据库系统-数据库或数据库用户】">

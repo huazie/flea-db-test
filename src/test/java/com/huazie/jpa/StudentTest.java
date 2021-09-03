@@ -35,21 +35,21 @@ public class StudentTest {
         try {
             IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
             Student student = new Student();
-            student.setStuName("张三3");
+            student.setStuName("张三4");
             student.setStuAge(18);
             student.setStuSex(1);
             student.setStuState(1);
             studentSV.save(student);
 
             student = new Student();
-            student.setStuName("李四3");
+            student.setStuName("李四4");
             student.setStuAge(19);
             student.setStuSex(1);
             student.setStuState(1);
             studentSV.save(student);
 
             student = new Student();
-            student.setStuName("王二麻子3");
+            student.setStuName("王二麻子4");
             student.setStuAge(20);
             student.setStuSex(1);
             student.setStuState(1);
@@ -65,14 +65,14 @@ public class StudentTest {
         try {
             IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
             // 根据主键查询学生信息
-            Student student = studentSV.query(3L);
+            Student student = studentSV.query(14L);
             LOGGER.error("Before : {}", student);
-            student.setStuName("王三麻子");
-            student.setStuAge(19);
+            student.setStuName("LGH");
+            student.setStuAge(18);
             // 更新学生信息
             studentSV.update(student);
             // 最后再根据主键查询学生信息
-            student = studentSV.query(3L);
+            student = studentSV.query(14L);
             LOGGER.error("After : {}", student);
         } catch (Exception e) {
             LOGGER.error("Exception : ", e);
@@ -84,12 +84,12 @@ public class StudentTest {
         try {
             IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
             // 根据主键查询学生信息
-            Student student = studentSV.query(3L);
+            Student student = studentSV.query(14L);
             LOGGER.error("Before : {}", student);
             // 删除学生信息(里面会先去将学生实体信息查出来，然后再删除)
-            studentSV.remove(3L);
+            studentSV.remove(14L);
             // 最后再根据主键查询学生信息
-            student = studentSV.query(3L);
+            student = studentSV.query(14L);
             LOGGER.error("After : {}", student);
         } catch (Exception e) {
             LOGGER.error("Exception : ", e);

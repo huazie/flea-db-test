@@ -22,9 +22,13 @@ import java.util.List;
 @Service("studentSV")
 public class StudentSVImpl extends AbstractFleaJPASVImpl<Student> implements IStudentSV {
 
+    private IStudentDAO studentDao;
+
     @Autowired
     @Qualifier("studentDAO")
-    private IStudentDAO studentDao;
+    public void setStudentDao(IStudentDAO studentDao) {
+        this.studentDao = studentDao;
+    }
 
     @Override
     public List<Student> getStudentList(String name, Integer sex, Integer minAge, Integer maxAge, int pageNum, int pageCount) throws CommonException {
