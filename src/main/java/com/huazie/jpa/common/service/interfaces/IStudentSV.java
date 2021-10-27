@@ -1,8 +1,8 @@
-package com.huazie.jpa.service.interfaces;
+package com.huazie.jpa.common.service.interfaces;
 
 import com.huazie.frame.common.exception.CommonException;
 import com.huazie.frame.db.jpa.service.interfaces.IAbstractFleaJPASV;
-import com.huazie.jpa.entity.Student;
+import com.huazie.jpa.common.entity.Student;
 
 import java.util.List;
 

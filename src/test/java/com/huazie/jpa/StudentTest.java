@@ -1,7 +1,8 @@
 package com.huazie.jpa;
 
-import com.huazie.jpa.entity.Student;
-import com.huazie.jpa.service.interfaces.IStudentSV;
+import com.huazie.frame.common.slf4j.impl.FleaLoggerProxy;
+import com.huazie.jpa.common.entity.Student;
+import com.huazie.jpa.common.service.interfaces.IStudentSV;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public class StudentTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(StudentTest.class);
+    private static final Logger LOGGER = FleaLoggerProxy.getProxyInstance(StudentTest.class);
 
     private ApplicationContext applicationContext;
 
@@ -41,20 +42,6 @@ public class StudentTest {
             student.setStuState(1);
             studentSV.save(student);
 
-            student = new Student();
-            student.setStuName("李四4");
-            student.setStuAge(19);
-            student.setStuSex(1);
-            student.setStuState(1);
-            studentSV.save(student);
-
-            student = new Student();
-            student.setStuName("王二麻子4");
-            student.setStuAge(20);
-            student.setStuSex(1);
-            student.setStuState(1);
-            studentSV.save(student);
-
         } catch (Exception e) {
             LOGGER.error("Exception : ", e);
         }
@@ -65,14 +52,14 @@ public class StudentTest {
         try {
             IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
             // 根据主键查询学生信息
-            Student student = studentSV.query(14L);
+            Student student = studentSV.query(1L);
             LOGGER.error("Before : {}", student);
             student.setStuName("LGH");
             student.setStuAge(18);
             // 更新学生信息
             studentSV.update(student);
             // 最后再根据主键查询学生信息
-            student = studentSV.query(14L);
+            student = studentSV.query(1L);
             LOGGER.error("After : {}", student);
         } catch (Exception e) {
             LOGGER.error("Exception : ", e);
@@ -84,12 +71,12 @@ public class StudentTest {
         try {
             IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
             // 根据主键查询学生信息
-            Student student = studentSV.query(14L);
+            Student student = studentSV.query(1L);
             LOGGER.error("Before : {}", student);
             // 删除学生信息(里面会先去将学生实体信息查出来，然后再删除)
-            studentSV.remove(14L);
+            studentSV.remove(1L);
             // 最后再根据主键查询学生信息
-            student = studentSV.query(14L);
+            student = studentSV.query(1L);
             LOGGER.error("After : {}", student);
         } catch (Exception e) {
             LOGGER.error("Exception : ", e);

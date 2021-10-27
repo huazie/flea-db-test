@@ -51,15 +51,15 @@
 			<property key="table" value="student" />
 			<!-- 这两个不填，表示表的字段全部使用-->
             <property key="columns" value="stu_name, stu_age, stu_sex, stu_state" />
-            <property key="values" value=":stuName, :stuAge, :stuSex, :stuState" />
+            <property key="values" value=":stuName:, :stuAge:, :stuSex:, :stuState:" />
 		</param>
 		<param id="update" name="SQL模板參數" desc="用于定义SQL模板中的替换参数">
 			<!-- 表名 -->
 			<property key="table" value="student" />
 			<!-- SET 子句 -->
-			<property key="sets" value="stu_name = :stuName, stu_age = :stuAge" />
+			<property key="sets" value="stu_name = :stuName:, stu_age = :stuAge:" />
 			<!-- WHERE 子句 -->
-			<property key="conditions" value="stu_name LIKE :sName AND stu_state = :stuState AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge" />
+			<property key="conditions" value="stu_name LIKE :sName: AND stu_state = :stuState: AND stu_sex = :stuSex: AND stu_age &gt;= :minAge: AND stu_age &lt;= :maxAge:" />
 		</param>
 		<param id="select" name="SQL模板參數" desc="用于定义SQL模板中的替换参数; 如需查询全部，则设置key=columns的属性值为 *，即可">
 			<!-- 表名 -->
@@ -67,13 +67,13 @@
 			<!-- SELECT 显示列 -->
 			<property key="columns" value="*" />
 			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
-			<property key="conditions" value="stu_name LIKE :stuName AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge" />
+			<property key="conditions" value="stu_name LIKE :stuName: AND stu_sex = :stuSex: AND stu_age &gt;= :minAge: AND stu_age &lt;= :maxAge:" />
 		</param>
 		<param id="delete" name="SQL模板參數" desc="用于定义SQL模板中的替换参数">
 			<!-- 表名 -->
 			<property key="table" value="student" />
 			<!-- WHERE 子句 -->
-			<property key="conditions" value="stu_name LIKE :stuName AND stu_state = :stuState AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge" />
+			<property key="conditions" value="stu_name LIKE :stuName: AND stu_state = :stuState: AND stu_sex = :stuSex: AND stu_age &gt;= :minAge: AND stu_age &lt;= :maxAge:" />
 		</param>
 		<param id="select_1" name="SQL模板參數" desc="用于定义SQL模板中的替换参数; 如需查询全部，则设置key=columns的属性值为 *，即可">
 			<!-- 表名 -->
@@ -81,7 +81,7 @@
 			<!-- SELECT 显示列 -->
 			<property key="columns" value="*" />
 			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
-			<property key="conditions" value="stu_name LIKE :stuName AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge ORDER BY stu_id DESC LIMIT :pageStart, :pageCount" />
+			<property key="conditions" value="stu_name LIKE :stuName: AND stu_sex = :stuSex: AND stu_age &gt;= :minAge: AND stu_age &lt;= :maxAge: ORDER BY stu_id DESC LIMIT :pageStart:, :pageCount:" />
 		</param>
 		<param id="select_2" name="SQL模板參數" desc="用于定义SQL模板中的替换参数; 如需查询全部，则设置key=columns的属性值为 *，即可">
 			<!-- 表名 -->
@@ -89,7 +89,7 @@
 			<!-- SELECT 显示列 -->
 			<property key="columns" value="count(*)" />
 			<!-- WHERE 子句 , 出现 xml不能直接识别的需要转义，如 >, < 等-->
-			<property key="conditions" value="stu_name LIKE :stuName AND stu_sex = :stuSex AND stu_age &gt;= :minAge AND stu_age &lt;= :maxAge" />
+			<property key="conditions" value="stu_name LIKE :stuName: AND stu_sex = :stuSex: AND stu_age &gt;= :minAge: AND stu_age &lt;= :maxAge:" />
 		</param>
 		<param id="select_3" name="SQL模板參數" desc="用于定义SQL模板中的替换参数; 如需查询全部，则设置key=columns的属性值为 *，即可">
 			<!-- 表名 -->

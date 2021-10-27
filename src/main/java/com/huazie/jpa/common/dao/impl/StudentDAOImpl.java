@@ -1,11 +1,11 @@
-package com.huazie.jpa.dao.impl;
+package com.huazie.jpa.common.dao.impl;
 
 import com.huazie.frame.common.exception.CommonException;
 import com.huazie.frame.common.util.StringUtils;
 import com.huazie.frame.db.jpa.common.FleaJPAQuery;
-import com.huazie.jpa.FleaJpaDAOImpl;
-import com.huazie.jpa.dao.interfaces.IStudentDAO;
-import com.huazie.jpa.entity.Student;
+import com.huazie.jpa.common.FleaJpaDAOImpl;
+import com.huazie.jpa.common.dao.interfaces.IStudentDAO;
+import com.huazie.jpa.common.entity.Student;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

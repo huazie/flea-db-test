@@ -6,7 +6,7 @@
 		<!-- provider -->
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<!-- Connection JDBC -->
-		<class>com.huazie.jpa.entity.Student</class>
+		<class>com.huazie.jpa.common.entity.Student</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>

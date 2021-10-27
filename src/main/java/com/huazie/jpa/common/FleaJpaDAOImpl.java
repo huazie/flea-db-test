@@ -1,4 +1,4 @@
-package com.huazie.jpa;
+package com.huazie.jpa.common;
 
 import com.huazie.frame.common.exception.CommonException;
 import com.huazie.frame.db.jpa.dao.impl.AbstractFleaJPADAOImpl;
@@ -22,7 +22,7 @@ public class FleaJpaDAOImpl<T> extends AbstractFleaJPADAOImpl<T> {
 
     @Override
     @Transactional("fleaJpaTransactionManager")
-    public Long getFleaNextValue(T entity) throws CommonException {
+    public Number getFleaNextValue(T entity) throws CommonException {
         return super.getFleaNextValue(entity);
     }
 

@@ -1,4 +1,4 @@
-package com.huazie.jpa.entity;
+package com.huazie.jpa.common.entity;
 
 import com.huazie.frame.common.FleaEntity;
 import org.apache.commons.lang.builder.ToStringBuilder;
