@@ -1,6 +1,6 @@
 package com.huazie.jpa.common.entity;
 
-import com.huazie.frame.common.FleaEntity;
+import com.huazie.fleaframework.common.FleaEntity;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 import javax.persistence.Column;

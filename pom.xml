@@ -53,9 +53,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.huazie.frame</groupId>
-            <artifactId>flea-frame-db-jdbc</artifactId>
-            <version>1.2.0</version>
+            <groupId>com.huazie.fleaframework</groupId>
+            <artifactId>flea-db-jdbc</artifactId>
+            <version>2.0.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.httpcomponents</groupId>
@@ -98,9 +98,9 @@
 
         <!-- FLEA FRAME DB -->
         <dependency>
-            <groupId>com.huazie.frame</groupId>
-            <artifactId>flea-frame-db-eclipselink</artifactId>
-            <version>1.2.0</version>
+            <groupId>com.huazie.fleaframework</groupId>
+            <artifactId>flea-db-eclipselink</artifactId>
+            <version>2.0.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.httpcomponents</groupId>

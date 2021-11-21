@@ -1,7 +1,7 @@
 package com.huazie.jpa.common.dao.interfaces;
 
-import com.huazie.frame.common.exception.CommonException;
-import com.huazie.frame.db.jpa.dao.interfaces.IAbstractFleaJPADAO;
+import com.huazie.fleaframework.common.exception.CommonException;
+import com.huazie.fleaframework.db.jpa.dao.interfaces.IAbstractFleaJPADAO;
 import com.huazie.jpa.common.entity.Student;
 
 import java.util.List;

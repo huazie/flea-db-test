@@ -1,8 +1,8 @@
 package com.huazie.jpa.concurrency;
 
-import com.huazie.frame.common.exception.CommonException;
-import com.huazie.frame.common.slf4j.FleaLogger;
-import com.huazie.frame.common.slf4j.impl.FleaLoggerProxy;
+import com.huazie.fleaframework.common.exception.CommonException;
+import com.huazie.fleaframework.common.slf4j.FleaLogger;
+import com.huazie.fleaframework.common.slf4j.impl.FleaLoggerProxy;
 import com.huazie.jpa.common.entity.Student;
 import com.huazie.jpa.common.service.interfaces.IStudentSV;
 

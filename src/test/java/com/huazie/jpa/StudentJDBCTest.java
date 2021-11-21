@@ -1,8 +1,8 @@
 package com.huazie.jpa;
 
-import com.huazie.frame.db.common.DBSystemEnum;
-import com.huazie.frame.db.jdbc.FleaJDBCHelper;
-import com.huazie.frame.db.jdbc.config.FleaJDBCConfig;
+import com.huazie.fleaframework.db.common.DBSystemEnum;
+import com.huazie.fleaframework.db.jdbc.FleaJDBCHelper;
+import com.huazie.fleaframework.db.jdbc.config.FleaJDBCConfig;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,8 +1,8 @@
 package com.huazie.jpa.common.dao.impl;
 
-import com.huazie.frame.common.exception.CommonException;
-import com.huazie.frame.common.util.StringUtils;
-import com.huazie.frame.db.jpa.common.FleaJPAQuery;
+import com.huazie.fleaframework.common.exception.CommonException;
+import com.huazie.fleaframework.common.util.StringUtils;
+import com.huazie.fleaframework.db.jpa.common.FleaJPAQuery;
 import com.huazie.jpa.common.FleaJpaDAOImpl;
 import com.huazie.jpa.common.dao.interfaces.IStudentDAO;
 import com.huazie.jpa.common.entity.Student;

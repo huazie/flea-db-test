@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
        default-autowire="byName" default-lazy-init="false">
 
     <!-- 自动扫描-->
-    <context:component-scan base-package="com.huazie.**.dao.impl,com.huazie.jpa.common.service.impl"/>
+    <context:component-scan base-package="com.huazie.**.dao.impl,com.huazie.**.service.impl,com.huazie.**.aspect"/>
+
+    <bean id="fleaApplicationContext" class="com.huazie.fleaframework.common.FleaApplicationContext" lazy-init="false"/>
 
     <bean id="defaultPersistenceManager"
           class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
@@ -15,6 +22,9 @@
             <!-- 可以配置多个持久单元 -->
             <list>
                 <value>classpath:META-INF/fleajpa-persistence.xml</value>
+                <value>classpath:META-INF/fleaorder-persistence.xml</value>
+                <value>classpath:META-INF/fleaorder1-persistence.xml</value>
+                <value>classpath:META-INF/fleaorder2-persistence.xml</value>
             </list>
         </property>
     </bean>
@@ -52,5 +62,81 @@
     </bean>
 
     <tx:annotation-driven transaction-manager="fleaJpaTransactionManager"/>
+
+    <!-- ################################## -->
+    <!-- FleaOrder TransAction Manager JPA -->
+    <!-- ################################## -->
+    <bean id="fleaOrderEntityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitManager" ref="defaultPersistenceManager"/>
+        <property name="persistenceUnitName" value="fleaorder"/>
+        <property name="persistenceProvider" ref="defaultPersistenceProvider"/>
+        <property name="jpaVendorAdapter" ref="defaultVendorAdapter"/>
+        <property name="jpaDialect" ref="defaultJpaDialect"/>
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="eclipselink.weaving" value="false"/>
+                <entry key="eclipselink.logging.thread" value="true"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="fleaOrderTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="fleaOrderEntityManagerFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="fleaOrderTransactionManager"/>
+
+
+    <!-- ################################## -->
+    <!-- FleaOrder1 TransAction Manager JPA -->
+    <!-- ################################## -->
+    <bean id="fleaOrderEntityManagerFactory1"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitManager" ref="defaultPersistenceManager"/>
+        <property name="persistenceUnitName" value="fleaorder1"/>
+        <property name="persistenceProvider" ref="defaultPersistenceProvider"/>
+        <property name="jpaVendorAdapter" ref="defaultVendorAdapter"/>
+        <property name="jpaDialect" ref="defaultJpaDialect"/>
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="eclipselink.weaving" value="false"/>
+                <entry key="eclipselink.logging.thread" value="true"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="fleaOrderTransactionManager1" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="fleaOrderEntityManagerFactory1"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="fleaOrderTransactionManager1"/>
+
+    <!-- ################################## -->
+    <!-- FleaOrder2 TransAction Manager JPA -->
+    <!-- ################################## -->
+    <bean id="fleaOrderEntityManagerFactory2"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitManager" ref="defaultPersistenceManager"/>
+        <property name="persistenceUnitName" value="fleaorder2"/>
+        <property name="persistenceProvider" ref="defaultPersistenceProvider"/>
+        <property name="jpaVendorAdapter" ref="defaultVendorAdapter"/>
+        <property name="jpaDialect" ref="defaultJpaDialect"/>
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="eclipselink.weaving" value="false"/>
+                <entry key="eclipselink.logging.thread" value="true"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="fleaOrderTransactionManager2" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="fleaOrderEntityManagerFactory2"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="fleaOrderTransactionManager2"/>
+
+    <!-- 织入使用注解定义的增强，需要引入AOP命名空间 -->
+    <aop:aspectj-autoproxy />
 
 </beans>

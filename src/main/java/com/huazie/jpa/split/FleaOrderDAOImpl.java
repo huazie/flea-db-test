@@ -1,7 +1,8 @@
-package com.huazie.jpa.common;
+package com.huazie.jpa.split;
 
 import com.huazie.fleaframework.common.exception.CommonException;
 import com.huazie.fleaframework.db.jpa.dao.impl.AbstractFleaJPADAOImpl;
+import com.huazie.fleaframework.db.jpa.transaction.FleaTransactional;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -9,97 +10,103 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
- * <p> FleaJpa数据源DAO层父类 </p>
+ * FleaOrder数据源DAO层父类
  *
  * @author huazie
- * @version 1.0.0
- * @since 1.0.0
+ * @version 1.2.0
+ * @since 1.2.0
  */
-public class FleaJpaDAOImpl<T> extends AbstractFleaJPADAOImpl<T> {
+public class FleaOrderDAOImpl<T> extends AbstractFleaJPADAOImpl<T> {
 
-    @PersistenceContext(unitName="fleajpa")
+    @PersistenceContext(unitName="fleaorder")
     private EntityManager entityManager;
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @Transactional("fleaOrderTransactionManager")
     public Number getFleaNextValue(T entity) throws CommonException {
         return super.getFleaNextValue(entity);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @Transactional("fleaOrderTransactionManager")
     public T queryNew(long entityId, T entity) throws CommonException {
         return super.queryNew(entityId, entity);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @Transactional("fleaOrderTransactionManager")
     public T queryNew(String entityId, T entity) throws CommonException {
         return super.queryNew(entityId, entity);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @Transactional("fleaOrderTransactionManager")
     public boolean remove(long entityId) throws CommonException {
         return super.remove(entityId);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @Transactional("fleaOrderTransactionManager")
     public boolean remove(String entityId) throws CommonException {
         return super.remove(entityId);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
+    public boolean remove(T entity) throws CommonException {
+        return super.remove(entity);
+    }
+
+    @Override
+    @FleaTransactional("fleaOrderTransactionManager")
     public boolean removeNew(long entityId, T entity) throws CommonException {
         return super.removeNew(entityId, entity);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
     public boolean removeNew(String entityId, T entity) throws CommonException {
         return super.removeNew(entityId, entity);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
     public T update(T entity) throws CommonException {
         return super.update(entity);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
     public List<T> batchUpdate(List<T> entities) throws CommonException {
         return super.batchUpdate(entities);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
     public void save(T entity) throws CommonException {
         super.save(entity);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
     public void batchSave(List<T> entities) throws CommonException {
         super.batchSave(entities);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @Transactional("fleaOrderTransactionManager")
     public int insert(String relationId, T entity) throws CommonException {
         return super.insert(relationId, entity);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @Transactional("fleaOrderTransactionManager")
     public int update(String relationId, T entity) throws CommonException {
         return super.update(relationId, entity);
     }
 
     @Override
-    @Transactional("fleaJpaTransactionManager")
+    @Transactional("fleaOrderTransactionManager")
     public int delete(String relationId, T entity) throws CommonException {
         return super.delete(relationId, entity);
     }

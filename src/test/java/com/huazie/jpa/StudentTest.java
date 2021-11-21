@@ -1,12 +1,11 @@
 package com.huazie.jpa;
 
-import com.huazie.frame.common.slf4j.impl.FleaLoggerProxy;
+import com.huazie.fleaframework.common.slf4j.impl.FleaLoggerProxy;
 import com.huazie.jpa.common.entity.Student;
 import com.huazie.jpa.common.service.interfaces.IStudentSV;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
