@@ -40,7 +40,7 @@ public class StudentTest {
             student.setStuSex(1);
             student.setStuState(1);
             studentSV.save(student);
-
+            LOGGER.debug("Student = {}", student);
         } catch (Exception e) {
             LOGGER.error("Exception : ", e);
         }
@@ -69,13 +69,24 @@ public class StudentTest {
     public void testStudentDelete() {
         try {
             IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
-            // 根据主键查询学生信息
-            Student student = studentSV.query(1L);
-            LOGGER.error("Before : {}", student);
-            // 删除学生信息(里面会先去将学生实体信息查出来，然后再删除)
-            studentSV.remove(1L);
+            long stuId = 1L;
+            studentSV.removeStudentByStuId(stuId);
             // 最后再根据主键查询学生信息
-            student = studentSV.query(1L);
+            Student student = studentSV.query(stuId);
+            LOGGER.error("After : {}", student);
+        } catch (Exception e) {
+            LOGGER.error("Exception : ", e);
+        }
+    }
+
+    @Test
+    public void testStudentDelete1() {
+        try {
+            IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
+            long stuId = 1L;
+            studentSV.removeStudentByStuId1(stuId);
+            // 最后再根据主键查询学生信息
+            Student student = studentSV.query(stuId);
             LOGGER.error("After : {}", student);
         } catch (Exception e) {
             LOGGER.error("Exception : ", e);
@@ -85,7 +96,6 @@ public class StudentTest {
     @Test
     public void testStudentQueryPage() {
         try {
-
             IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
             List<Student> studentList = studentSV.getStudentList("张三", 1, 18, 20, 1, 5);
             LOGGER.debug("Student List = {}", studentList);

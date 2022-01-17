@@ -1,6 +1,7 @@
 package com.huazie.jpa.common.service.impl;
 
 import com.huazie.fleaframework.common.exception.CommonException;
+import com.huazie.fleaframework.common.util.CollectionUtils;
 import com.huazie.fleaframework.db.jpa.dao.interfaces.IAbstractFleaJPADAO;
 import com.huazie.fleaframework.db.jpa.service.impl.AbstractFleaJPASVImpl;
 import com.huazie.jpa.common.dao.interfaces.IStudentDAO;
@@ -9,8 +10,11 @@ import com.huazie.jpa.common.service.interfaces.IStudentSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p> 学生SV层实现类 </p>
@@ -38,6 +42,29 @@ public class StudentSVImpl extends AbstractFleaJPASVImpl<Student> implements ISt
     @Override
     public long getStudentCount(String name, Integer sex, Integer minAge, Integer maxAge) throws CommonException {
         return studentDao.getStudentCount(name, sex, minAge, maxAge);
+    }
+
+    @Override
+    @Transactional("fleaJpaTransactionManager")
+    public void removeStudentByStuId(Long stuId) throws CommonException {
+        // 根据主键查询学生信息
+        Student student = this.query(stuId);
+        // 删除学生信息
+        this.remove(student);
+    }
+
+    @Override
+    @Transactional("fleaJpaTransactionManager")
+    public void removeStudentByStuId1(Long stuId) throws CommonException {
+        // 根据主键查询学生信息
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("stuId", stuId);
+        List<Student> studentList = this.query(paramMap);
+        if (CollectionUtils.isNotEmpty(studentList)) {
+            Student student = studentList.get(0);
+            // 删除学生信息
+            this.remove(student);
+        }
     }
 
     @Override

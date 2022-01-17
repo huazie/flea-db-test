@@ -7,6 +7,9 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<!-- Connection JDBC -->
 		<class>com.huazie.jpa.split.entity.Order</class>
+		<class>com.huazie.jpa.split.entity.OrderAttr</class>
+		<class>com.huazie.jpa.split.entity.OldOrder</class>
+		<class>com.huazie.jpa.split.entity.OldOrderAttr</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>

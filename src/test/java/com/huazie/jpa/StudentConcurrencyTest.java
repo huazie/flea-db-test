@@ -2,8 +2,8 @@ package com.huazie.jpa;
 
 import com.huazie.fleaframework.common.slf4j.FleaLogger;
 import com.huazie.fleaframework.common.slf4j.impl.FleaLoggerProxy;
-import com.huazie.jpa.concurrency.InsertTest;
 import com.huazie.jpa.common.service.interfaces.IStudentSV;
+import com.huazie.jpa.concurrency.InsertTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

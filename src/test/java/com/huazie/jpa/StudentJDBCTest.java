@@ -27,7 +27,7 @@ public class StudentJDBCTest {
 
         String sql = "insert into student(stu_name, stu_age, stu_sex, stu_state) values(?, ?, ?, ?)";
 
-        List<Object> paramList = new ArrayList<Object>();
+        List<Object> paramList = new ArrayList<>();
         paramList.add("huazie");
         paramList.add(25);
         paramList.add(1);
@@ -44,7 +44,7 @@ public class StudentJDBCTest {
 
         String sql = "select * from student where stu_state = ?";
 
-        List<Object> paramList = new ArrayList<Object>();
+        List<Object> paramList = new ArrayList<>();
         paramList.add(1);
 
         LOGGER.debug("RESULT LIST = {}", FleaJDBCHelper.query(sql, paramList));
@@ -56,7 +56,7 @@ public class StudentJDBCTest {
 
         String sql = "select count(*) from student where stu_state = ?";
 
-        List<Object> paramList = new ArrayList<Object>();
+        List<Object> paramList = new ArrayList<>();
         paramList.add(1);
 
         LOGGER.debug("COUNT = {}", FleaJDBCHelper.querySingle(sql, paramList));
@@ -68,7 +68,7 @@ public class StudentJDBCTest {
 
         String sql = "update student set stu_state = ? where stu_name = ?";
 
-        List<Object> paramList = new ArrayList<Object>();
+        List<Object> paramList = new ArrayList<>();
         paramList.add(2);
         paramList.add("huazie");
 
@@ -83,7 +83,7 @@ public class StudentJDBCTest {
 
         String sql = "delete from student where stu_name = ? and stu_state = ? ";
 
-        List<Object> paramList = new ArrayList<Object>();
+        List<Object> paramList = new ArrayList<>();
         paramList.add("huazie");
         paramList.add(2);
 

@@ -1,7 +1,7 @@
 package com.huazie.jpa.split.dao.interfaces;
 
-import com.huazie.jpa.split.entity.Order;
 import com.huazie.fleaframework.db.jpa.dao.interfaces.IAbstractFleaJPADAO;
+import com.huazie.jpa.split.entity.Order;
 
 /**
  * flea订单DAO层接口

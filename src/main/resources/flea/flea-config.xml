@@ -3,7 +3,7 @@
 <flea-config>
 
     <config-items key="flea-object-pool" desc="Flea对象池配置">
-        <!-- flea-frame-db-jpa -->
+        <!-- flea-db-jpa -->
         <config-item key="FleaJPAQuery" desc="Flea JPA查询对象池构建者">com.huazie.fleaframework.db.jpa.common.FleaJPAQueryPoolBuilder</config-item>
     </config-items>
 

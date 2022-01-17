@@ -1,9 +1,12 @@
 package com.huazie.jpa.split;
 
 import com.huazie.fleaframework.common.slf4j.impl.FleaLoggerProxy;
+import com.huazie.fleaframework.common.util.CollectionUtils;
 import com.huazie.fleaframework.common.util.DateUtils;
+import com.huazie.fleaframework.db.common.util.FleaLibUtil;
 import com.huazie.fleaframework.db.jpa.aspect.FleaTransactionalAspect;
 import com.huazie.fleaframework.db.jpa.persistence.FleaEntityManager;
+import com.huazie.jpa.module.order.service.interfaces.IFleaOrderModuleSV;
 import com.huazie.jpa.split.entity.Order;
 import com.huazie.jpa.split.service.interfaces.IOrderSV;
 import org.junit.Before;
@@ -13,6 +16,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.persistence.EntityManager;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author huazie
@@ -65,12 +71,13 @@ public class OrderTest {
 
         IOrderSV orderSV = (IOrderSV) applicationContext.getBean("orderSV");
 
+        long orderId = 1000000000L;
         Order order = new Order();
-        order.setOrderId(1000000000L);
+        order.setOrderId(orderId);
 
-        order = orderSV.queryNew(1000000000L, order);
+        order = orderSV.query(orderId, order);
 
-        LOGGER.debug("Order={}", order);
+        LOGGER.debug("Order = {}", order);
     }
 
     @Test
@@ -78,23 +85,30 @@ public class OrderTest {
 
         IOrderSV orderSV = (IOrderSV) applicationContext.getBean("orderSV");
 
+        long orderId = 1000000000L;
         Order order = new Order();
-        order.setOrderId(1000000001L);
+        order.setOrderId(orderId);
 
-        order = orderSV.queryNew(1000000001L, order);
+        Set<String> attrNames = new HashSet<>();
+        attrNames.add("orderId");
+        List<Order> orderList = orderSV.query(attrNames, order);
 
-        LOGGER.debug("Before : {}", order);
+        if (CollectionUtils.isNotEmpty(orderList)) {
+            order = orderList.get(0);
 
-        order.setOrderName("修改订单");
-        order.setOrderPrice(100L);
-        order.setOrderState(1);
+            LOGGER.debug("Before : {}", order);
 
-        orderSV.update(order);
+            order.setOrderName("修改订单");
+            order.setOrderPrice(100L);
+            order.setOrderState(1);
+
+            orderSV.update(order);
+        }
 
         Order order1 = new Order();
-        order1.setOrderId(1000000001L);
+        order1.setOrderId(orderId);
 
-        order1 = orderSV.queryNew(1000000001L, order1);
+        order1 = orderSV.query(orderId, order1);
 
         LOGGER.debug("After : {}", order1);
     }
@@ -103,15 +117,35 @@ public class OrderTest {
     public void testDeleteOrder() throws Exception {
         IOrderSV orderSV = (IOrderSV) applicationContext.getBean("orderSV");
 
+        long orderId = 1000000000L;
         Order order = new Order();
-        order.setOrderId(1000000001L);
+        order.setOrderId(orderId);
 
-        Order order1 = orderSV.queryNew(1000000001, order);
-        LOGGER.error("Before : {}", order1);
+        Set<String> attrNames = new HashSet<>();
+        attrNames.add("orderId");
+        List<Order> orderList = orderSV.query(attrNames, order);
 
-        orderSV.removeNew(1000000001L, order);
+        if (CollectionUtils.isNotEmpty(orderList)) {
+            Order order1 = orderList.get(0);
+            LOGGER.error("Before : {}", order1);
 
-        Order order2 = orderSV.queryNew(1000000001, order);
+            orderSV.remove(order1);
+        }
+
+        Order order2 = orderSV.query(orderId, order);
         LOGGER.error("After : {}", order2);
+    }
+
+    @Test
+    public void testTransaction() throws Exception {
+
+        IFleaOrderModuleSV fleaOrderModuleSV = (IFleaOrderModuleSV) applicationContext.getBean("fleaOrderModuleSV");
+
+        long orderId = 1000000000L;
+
+        // 设置分库序列值
+        FleaLibUtil.setSplitLibSeqValue("SEQ", orderId);
+
+        fleaOrderModuleSV.orderTransaction(orderId);
     }
 }

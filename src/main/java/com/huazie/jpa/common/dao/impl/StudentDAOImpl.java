@@ -28,7 +28,7 @@ public class StudentDAOImpl extends FleaJpaDAOImpl<Student> implements IStudentD
         List<Student> studentList;
 
         if (pageNum > 0 && pageCount > 0) {
-            studentList = query.getResultList((pageNum - 1) * pageCount, pageCount);
+            studentList = query.getResultList4Page(pageNum, pageCount);
         } else {
             studentList = query.getResultList();
         }

@@ -43,4 +43,22 @@ public interface IStudentSV extends IAbstractFleaJPASV<Student> {
      */
     long getStudentCount(String name, Integer sex, Integer minAge, Integer maxAge) throws CommonException;
 
+    /**
+     * 删除学生
+     *
+     * @param stuId 学生编号
+     * @throws CommonException 通用异常
+     * @since 1.0.0
+     */
+    void removeStudentByStuId(Long stuId) throws CommonException;
+
+    /**
+     * 删除学生
+     *
+     * @param stuId 学生编号
+     * @throws CommonException 通用异常
+     * @since 1.0.0
+     */
+    void removeStudentByStuId1(Long stuId) throws CommonException;
+
 }
