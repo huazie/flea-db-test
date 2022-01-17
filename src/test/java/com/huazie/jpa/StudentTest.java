@@ -1,6 +1,7 @@
 package com.huazie.jpa;
 
 import com.huazie.fleaframework.common.slf4j.impl.FleaLoggerProxy;
+import com.huazie.fleaframework.common.util.CollectionUtils;
 import com.huazie.jpa.common.entity.Student;
 import com.huazie.jpa.common.service.interfaces.IStudentSV;
 import org.junit.Before;
@@ -9,7 +10,9 @@ import org.slf4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>  </p>
@@ -35,8 +38,8 @@ public class StudentTest {
         try {
             IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
             Student student = new Student();
-            student.setStuName("张三4");
-            student.setStuAge(18);
+            student.setStuName("刘罗锅");
+            student.setStuAge(30);
             student.setStuSex(1);
             student.setStuState(1);
             studentSV.save(student);
@@ -84,7 +87,31 @@ public class StudentTest {
         try {
             IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
             long stuId = 1L;
+            // 在事物中的查询，然后删除
             studentSV.removeStudentByStuId1(stuId);
+            // 最后再根据主键查询学生信息
+            Student student = studentSV.query(stuId);
+            LOGGER.error("After : {}", student);
+        } catch (Exception e) {
+            LOGGER.error("Exception : ", e);
+        }
+    }
+
+    @Test
+    public void testStudentDelete2() {
+        try {
+            IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
+            long stuId = 1L;
+            // 根据主键查询学生信息
+            Map<String, Object> paramMap = new HashMap<>();
+            paramMap.put("stuId", stuId);
+            // 当前无事物的查询
+            List<Student> studentList = studentSV.query(paramMap);
+            if (CollectionUtils.isNotEmpty(studentList)) {
+                Student student = studentList.get(0);
+                // 删除学生信息
+                studentSV.remove(student);
+            }
             // 最后再根据主键查询学生信息
             Student student = studentSV.query(stuId);
             LOGGER.error("After : {}", student);
