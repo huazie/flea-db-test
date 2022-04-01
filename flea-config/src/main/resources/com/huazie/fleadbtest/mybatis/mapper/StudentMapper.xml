@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huazie.fleadbtest.mybatis.mapper.StudentMapper">
+
+    <!-- mybatis 字段映射
+        1. 查询时使用别名，别名和属性名保持一致
+        2. 通过resultMap标签映射表字段名和pojo属性名
+    -->
+    <!-- 1. 查询时使用别名，别名和属性名保持一致 -->
+    <select id="selectAll" resultType="Student">
+        select stu_id as stuId,
+               stu_name as stuName,
+               stu_age as stuAge,
+               stu_sex as stuSex,
+               stu_state as stuState from student;
+    </select>
+
+    <!-- 2. 通过resultMap标签映射表字段名和pojo属性名 -->
+    <!-- type：表示实体类的全限定类名  id：通过id其他标签可引用该标签-->
+    <resultMap type="Student" id="studentMap">
+        <!-- id 标签映射主键字段 -->
+        <id property="stuId" column="stu_id"/>
+        <!-- result 标签映射其他字段 -->
+        <result property="stuName" column="stu_name"/>
+        <result property="stuAge" column="stu_age"/>
+        <result property="stuSex" column="stu_sex"/>
+        <result property="stuState" column="stu_state"/>
+    </resultMap>
+
+    <select id="queryById" resultMap="studentMap">
+        select * from student where stu_id = #{id}
+    </select>
+
+</mapper>

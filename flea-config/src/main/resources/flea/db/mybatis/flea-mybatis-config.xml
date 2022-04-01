@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- -->
+
+    <!-- -->
+
+    <!-- -->
+    <typeAliases>
+        <typeAlias alias="Student" type="com.huazie.fleadbtest.mybatis.pojo.Student"/>
+    </typeAliases>
+    <!-- -->
+
+    <!-- -->
+
+    <!-- -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/fleajpatest?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!-- #1. resource方式加载映射文件 -->
+        <!--<mapper resource="com/huazie/fleadbtest/mybatis/mapper/StudentMapper.xml"/>-->
+        <!-- #2. 包扫描加载映射文件 : 接口类 和映射文件放在同一个目录下，并文件名要一致-->
+        <package name="com.huazie.fleadbtest.mybatis.mapper"/>
+    </mappers>
+</configuration>
