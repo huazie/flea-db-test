@@ -1,6 +1,7 @@
-package com.huazie.fleadbtest.mybatis.mapper;
+package com.huazie.fleadbtest.mybatisplus.mapper;
 
-import com.huazie.fleadbtest.mybatis.pojo.Student;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.huazie.fleadbtest.mybatisplus.entity.Student;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.cursor.Cursor;
@@ -8,13 +9,13 @@ import org.apache.ibatis.cursor.Cursor;
 import java.util.List;
 
 /**
- * 接口类 和 映射文件放在同一个目录下，并且文件名要一致
+ * 学生 Mapper 代理接口
  *
  * @author huazie
  * @version 2.0.0
  * @since 2.0.0
  */
-public interface StudentMapper {
+public interface StudentMapper extends BaseMapper<Student> {
 
     List<Student> selectAll();
 

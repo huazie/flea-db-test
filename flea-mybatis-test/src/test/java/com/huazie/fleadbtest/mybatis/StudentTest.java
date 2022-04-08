@@ -2,6 +2,7 @@ package com.huazie.fleadbtest.mybatis;
 
 import com.huazie.fleadbtest.mybatis.mapper.StudentMapper;
 import com.huazie.fleadbtest.mybatis.pojo.Student;
+import org.apache.ibatis.cursor.Cursor;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -20,9 +21,9 @@ import java.util.List;
  * @version 2.0.0
  * @since 2.0.0
  */
-public class TestStudent {
+public class StudentTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TestStudent.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(StudentTest.class);
 
     private SqlSessionFactory sqlSessionFactory;
 
@@ -73,6 +74,14 @@ public class TestStudent {
             StudentMapper mapper = session.getMapper(StudentMapper.class);
             Student student = mapper.selectByIdNew(9L);
             LOGGER.debug("Student = {}", student);
+        }
+    }
+
+    @Test
+    public void testCursor() throws Exception {
+        try (SqlSession session = sqlSessionFactory.openSession();
+             Cursor<Student> cursor = session.getMapper(StudentMapper.class).scan(10)) {
+            cursor.forEach(student -> LOGGER.debug("Student = {}", student));
         }
     }
 }

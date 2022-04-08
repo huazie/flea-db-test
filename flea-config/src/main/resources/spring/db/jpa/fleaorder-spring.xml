@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- ################################## -->
+    <!-- FleaOrder TransAction Manager JPA -->
+    <!-- ################################## -->
+    <bean id="fleaOrderEntityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitManager" ref="defaultPersistenceManager"/>
+        <property name="persistenceUnitName" value="fleaorder"/>
+        <property name="persistenceProvider" ref="defaultPersistenceProvider"/>
+        <property name="jpaVendorAdapter" ref="defaultVendorAdapter"/>
+        <property name="jpaDialect" ref="defaultJpaDialect"/>
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="eclipselink.weaving" value="false"/>
+                <entry key="eclipselink.logging.thread" value="true"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="fleaOrderTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="fleaOrderEntityManagerFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="fleaOrderTransactionManager"/>
+
+    <!-- ################################## -->
+    <!-- FleaOrder1 TransAction Manager JPA -->
+    <!-- ################################## -->
+    <bean id="fleaOrderEntityManagerFactory1"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitManager" ref="defaultPersistenceManager"/>
+        <property name="persistenceUnitName" value="fleaorder1"/>
+        <property name="persistenceProvider" ref="defaultPersistenceProvider"/>
+        <property name="jpaVendorAdapter" ref="defaultVendorAdapter"/>
+        <property name="jpaDialect" ref="defaultJpaDialect"/>
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="eclipselink.weaving" value="false"/>
+                <entry key="eclipselink.logging.thread" value="true"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="fleaOrderTransactionManager1" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="fleaOrderEntityManagerFactory1"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="fleaOrderTransactionManager1"/>
+
+    <!-- ################################## -->
+    <!-- FleaOrder2 TransAction Manager JPA -->
+    <!-- ################################## -->
+    <bean id="fleaOrderEntityManagerFactory2"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitManager" ref="defaultPersistenceManager"/>
+        <property name="persistenceUnitName" value="fleaorder2"/>
+        <property name="persistenceProvider" ref="defaultPersistenceProvider"/>
+        <property name="jpaVendorAdapter" ref="defaultVendorAdapter"/>
+        <property name="jpaDialect" ref="defaultJpaDialect"/>
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="eclipselink.weaving" value="false"/>
+                <entry key="eclipselink.logging.thread" value="true"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="fleaOrderTransactionManager2" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="fleaOrderEntityManagerFactory2"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="fleaOrderTransactionManager2"/>
+
+</beans>
