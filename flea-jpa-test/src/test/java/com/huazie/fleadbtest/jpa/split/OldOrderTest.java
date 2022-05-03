@@ -7,37 +7,38 @@ import com.huazie.fleaframework.common.slf4j.impl.FleaLoggerProxy;
 import com.huazie.fleaframework.common.util.CollectionUtils;
 import com.huazie.fleaframework.common.util.DateUtils;
 import com.huazie.fleaframework.db.common.util.FleaLibUtil;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.slf4j.Logger;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 /**
+ * 已验证
+ *
  * @author huazie
  * @version 1.2.0
  * @since 1.2.0
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class OldOrderTest {
 
     private static final Logger LOGGER = FleaLoggerProxy.getProxyInstance(OldOrderTest.class);
 
-    private ApplicationContext applicationContext;
+    @Resource(name = "oldOrderSV")
+    private IOldOrderSV oldOrderSV;
 
-    @Before
-    public void init() {
-        applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        LOGGER.debug("ApplicationContext={}", applicationContext);
-    }
+    @Resource(name = "fleaOrderModuleSV")
+    private IFleaOrderModuleSV fleaOrderModuleSV;
 
     @Test
     public void testInsertOldOrder() throws Exception {
-
-        IOldOrderSV oldOrderSV = (IOldOrderSV) applicationContext.getBean("oldOrderSV");
 
         OldOrder oldOrder = new OldOrder();
         oldOrder.setOrderName("测试旧订单1");
@@ -57,8 +58,6 @@ public class OldOrderTest {
     @Test
     public void testQueryOldOrder() throws Exception {
 
-        IOldOrderSV oldOrderSV = (IOldOrderSV) applicationContext.getBean("oldOrderSV");
-
         long orderId = 1000000000L;
         OldOrder oldOrder = new OldOrder();
         //oldOrder.setOrderId(orderId);
@@ -74,8 +73,6 @@ public class OldOrderTest {
 
     @Test
     public void testUpdateOldOrder() throws Exception {
-
-        IOldOrderSV oldOrderSV = (IOldOrderSV) applicationContext.getBean("oldOrderSV");
 
         long orderId = 1000000000L;
 
@@ -111,7 +108,6 @@ public class OldOrderTest {
 
     @Test
     public void testDeleteOldOrder() throws Exception {
-        IOldOrderSV oldOrderSV = (IOldOrderSV) applicationContext.getBean("oldOrderSV");
 
         long orderId = 1000000000L;
 
@@ -138,8 +134,6 @@ public class OldOrderTest {
 
     @Test
     public void testTransaction() throws Exception {
-
-        IFleaOrderModuleSV fleaOrderModuleSV = (IFleaOrderModuleSV) applicationContext.getBean("fleaOrderModuleSV");
 
         Long orderId = 1000000001L;
 

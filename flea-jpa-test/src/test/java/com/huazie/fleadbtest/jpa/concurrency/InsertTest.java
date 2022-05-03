@@ -37,7 +37,7 @@ public class InsertTest {
         public void run() {
             try {
                 Student student = new Student();
-                student.setStuName("张三5");
+                student.setStuName("张三4");
                 student.setStuAge(18);
                 student.setStuSex(1);
                 student.setStuState(1);
@@ -60,7 +60,7 @@ public class InsertTest {
         public void run() {
             try {
                 Student student = new Student();
-                student.setStuName("李四5");
+                student.setStuName("李四4");
                 student.setStuAge(19);
                 student.setStuSex(1);
                 student.setStuState(1);
@@ -83,7 +83,7 @@ public class InsertTest {
         public void run() {
             try {
                 Student student = new Student();
-                student.setStuName("王二麻子5");
+                student.setStuName("王二麻子4");
                 student.setStuAge(20);
                 student.setStuSex(1);
                 student.setStuState(1);

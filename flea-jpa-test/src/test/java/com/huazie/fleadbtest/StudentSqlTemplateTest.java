@@ -5,39 +5,35 @@ import com.huazie.fleadbtest.jpa.common.service.interfaces.IStudentSV;
 import com.huazie.fleaframework.db.common.DBSystemEnum;
 import com.huazie.fleaframework.db.jdbc.FleaJDBCHelper;
 import com.huazie.fleaframework.db.jdbc.config.FleaJDBCConfig;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
 /**
- * <p>  </p>
+ * 已验证
  *
  * @author huazie
  * @version 1.0.0
  * @since 1.0.0
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class StudentSqlTemplateTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentSqlTemplateTest.class);
 
-    private ApplicationContext applicationContext;
-
-    @Before
-    public void init() {
-        applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        LOGGER.debug("ApplicationContext={}", applicationContext);
-    }
+    @Resource(name = "studentSV")
+    private IStudentSV studentSV;
 
     @Test
     public void testInsertSqlTemplateFromJPA() throws Exception {
-        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
-
         Student student = new Student();
         student.setStuName("王老五");
         student.setStuAge(35);
@@ -50,7 +46,6 @@ public class StudentSqlTemplateTest {
 
     @Test
     public void testInsertSqlTemplateFromJDBC() throws Exception {
-
         FleaJDBCConfig.init(DBSystemEnum.MySQL.getName(), "fleajpatest");
 
         Student student = new Student();
@@ -65,8 +60,6 @@ public class StudentSqlTemplateTest {
 
     @Test
     public void testQuerySqlTemplateFromJPA() throws Exception {
-        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
-
         Student student = new Student();
         student.setStuName("%老%");
         student.setStuSex(1);
@@ -91,8 +84,6 @@ public class StudentSqlTemplateTest {
 
     @Test
     public void testUpdateSqlTemplateFromJPA() throws Exception {
-        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
-
         Student student = new Student();
         student.setStuName("王老五1");
         student.setStuAge(40);
@@ -123,8 +114,6 @@ public class StudentSqlTemplateTest {
 
     @Test
     public void testDeleteSqlTemplateFromJPA() throws Exception {
-        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
-
         Student student = new Student();
         student.setStuName("%王老五%");
         student.setStuState(1);
@@ -151,8 +140,6 @@ public class StudentSqlTemplateTest {
 
     @Test
     public void testQueryPageSqlTemplateFromJPA() throws Exception {
-        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
-
         Student student = new Student();
         student.setStuName("%张三%");
         student.setStuSex(1);
@@ -189,8 +176,6 @@ public class StudentSqlTemplateTest {
 
     @Test
     public void testQueryCountSqlTemplateFromJPA() throws Exception {
-        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
-
         Student student = new Student();
         student.setStuName("%张三%");
         student.setStuSex(1);
@@ -215,7 +200,6 @@ public class StudentSqlTemplateTest {
 
     @Test
     public void testQuerySumSqlTemplateFromJPA() throws Exception {
-        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
         LOGGER.debug("Student Age = {}", studentSV.querySingle("select_3", new Student()));
     }
 
@@ -227,7 +211,6 @@ public class StudentSqlTemplateTest {
 
     @Test
     public void testQueryAvgSqlTemplateFromJPA() throws Exception {
-        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
         LOGGER.debug("Student Age = {}", studentSV.querySingle("select_4", new Student()));
     }
 
@@ -239,7 +222,6 @@ public class StudentSqlTemplateTest {
 
     @Test
     public void testQueryMaxSqlTemplateFromJPA() throws Exception {
-        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
         LOGGER.debug("Student Age = {}", studentSV.querySingle("select_5", new Student()));
     }
 
@@ -251,7 +233,6 @@ public class StudentSqlTemplateTest {
 
     @Test
     public void testQueryMinSqlTemplateFromJPA() throws Exception {
-        IStudentSV studentSV = (IStudentSV) applicationContext.getBean("studentSV");
         LOGGER.debug("Student Age = {}", studentSV.querySingle("select_6", new Student()));
     }
 

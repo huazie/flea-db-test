@@ -3,39 +3,43 @@ package com.huazie.fleadbtest.jpa.split;
 import com.huazie.fleadbtest.jpa.module.order.service.interfaces.IFleaOrderModuleSV;
 import com.huazie.fleadbtest.jpa.split.entity.Order;
 import com.huazie.fleadbtest.jpa.split.service.interfaces.IOrderSV;
+import com.huazie.fleaframework.common.FleaApplicationContext;
 import com.huazie.fleaframework.common.slf4j.impl.FleaLoggerProxy;
 import com.huazie.fleaframework.common.util.CollectionUtils;
 import com.huazie.fleaframework.common.util.DateUtils;
 import com.huazie.fleaframework.db.common.util.FleaLibUtil;
 import com.huazie.fleaframework.db.jpa.aspect.FleaTransactionalAspect;
 import com.huazie.fleaframework.db.jpa.persistence.FleaEntityManager;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.slf4j.Logger;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 /**
+ * 已验证
+ *
  * @author huazie
  * @version 1.2.0
  * @since 1.2.0
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class OrderTest {
 
     private static final Logger LOGGER = FleaLoggerProxy.getProxyInstance(OrderTest.class);
 
-    private ApplicationContext applicationContext;
+    @Resource(name = "orderSV")
+    private IOrderSV orderSV;
 
-    @Before
-    public void init() {
-        applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        LOGGER.debug("ApplicationContext={}", applicationContext);
-    }
+    @Resource(name = "fleaOrderModuleSV")
+    private IFleaOrderModuleSV fleaOrderModuleSV;
 
     @Test
     public void testEntityManager() throws Exception {
@@ -45,14 +49,12 @@ public class OrderTest {
 
     @Test
     public void testFleaTransactionalAspect() {
-        FleaTransactionalAspect fleaTransactionalAspect = applicationContext.getBean(FleaTransactionalAspect.class);
+        FleaTransactionalAspect fleaTransactionalAspect = FleaApplicationContext.getBean(FleaTransactionalAspect.class);
         LOGGER.debug("FleaTransactionalAspect={}", fleaTransactionalAspect);
     }
 
     @Test
     public void testInsertOrder() throws Exception {
-
-        IOrderSV orderSV = (IOrderSV) applicationContext.getBean("orderSV");
 
         Order order = new Order();
         order.setOrderName("测试订单");
@@ -69,8 +71,6 @@ public class OrderTest {
     @Test
     public void testQueryOrder() throws Exception {
 
-        IOrderSV orderSV = (IOrderSV) applicationContext.getBean("orderSV");
-
         long orderId = 1000000000L;
         Order order = new Order();
         order.setOrderId(orderId);
@@ -82,8 +82,6 @@ public class OrderTest {
 
     @Test
     public void testUpdateOrder() throws Exception {
-
-        IOrderSV orderSV = (IOrderSV) applicationContext.getBean("orderSV");
 
         long orderId = 1000000000L;
         Order order = new Order();
@@ -115,8 +113,6 @@ public class OrderTest {
 
     @Test
     public void testDeleteOrder() throws Exception {
-        IOrderSV orderSV = (IOrderSV) applicationContext.getBean("orderSV");
-
         long orderId = 1000000000L;
         Order order = new Order();
         order.setOrderId(orderId);
@@ -138,8 +134,6 @@ public class OrderTest {
 
     @Test
     public void testTransaction() throws Exception {
-
-        IFleaOrderModuleSV fleaOrderModuleSV = (IFleaOrderModuleSV) applicationContext.getBean("fleaOrderModuleSV");
 
         long orderId = 1000000000L;
 

@@ -148,13 +148,5 @@ public class StudentSpringTest {
         LOGGER.debug("Student List = {}", page.getRecords());
     }
 
-    /**
-     * 测试Mybatis plus 流式查询
-     */
-    @Test
-    public void testCursor() {
-
-    }
-
     // DynamicTableNameInnerInterceptor 动态表名
 }

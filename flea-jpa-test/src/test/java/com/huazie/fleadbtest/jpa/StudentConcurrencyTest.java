@@ -11,6 +11,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * 已验证
+ *
  * @author huazie
  * @version 1.2.0
  * @since 1.2.0
