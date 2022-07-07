@@ -6,7 +6,7 @@
             count: 分库总数
             exp  : 分库名表达式 (模板库名)(分库序列键)
         -->
-        <lib name="fleaorder" count="2" exp="(FLEA_LIB_NAME)(SEQ)" desc="flea文件服务器核心库分库规则">
+        <lib name="fleaorder" count="2" exp="(FLEA_LIB_NAME)(SEQ)" desc="flea订单库分库规则">
             <!-- 分库事物配置
                 name : 模板事物名
                 exp  : 分库事物名表达式 (模板事物名)(分库序列键)

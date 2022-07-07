@@ -3,7 +3,6 @@ package com.huazie.fleadbtest.jpa.split;
 import com.huazie.fleaframework.common.exception.CommonException;
 import com.huazie.fleaframework.db.jpa.dao.impl.AbstractFleaJPADAOImpl;
 import com.huazie.fleaframework.db.jpa.transaction.FleaTransactional;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,19 +21,19 @@ public class FleaOrderDAOImpl<T> extends AbstractFleaJPADAOImpl<T> {
     private EntityManager entityManager;
 
     @Override
-    @Transactional("fleaOrderTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
     public Number getFleaNextValue(T entity) throws CommonException {
         return super.getFleaNextValue(entity);
     }
 
     @Override
-    @Transactional("fleaOrderTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
     public boolean remove(long entityId) throws CommonException {
         return super.remove(entityId);
     }
 
     @Override
-    @Transactional("fleaOrderTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
     public boolean remove(String entityId) throws CommonException {
         return super.remove(entityId);
     }
@@ -82,19 +81,19 @@ public class FleaOrderDAOImpl<T> extends AbstractFleaJPADAOImpl<T> {
     }
 
     @Override
-    @Transactional("fleaOrderTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
     public int insert(String relationId, T entity) throws CommonException {
         return super.insert(relationId, entity);
     }
 
     @Override
-    @Transactional("fleaOrderTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
     public int update(String relationId, T entity) throws CommonException {
         return super.update(relationId, entity);
     }
 
     @Override
-    @Transactional("fleaOrderTransactionManager")
+    @FleaTransactional("fleaOrderTransactionManager")
     public int delete(String relationId, T entity) throws CommonException {
         return super.delete(relationId, entity);
     }
