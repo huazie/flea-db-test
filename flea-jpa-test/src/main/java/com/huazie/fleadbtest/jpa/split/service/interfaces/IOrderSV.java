@@ -1,7 +1,7 @@
 package com.huazie.fleadbtest.jpa.split.service.interfaces;
 
 import com.huazie.fleadbtest.jpa.split.entity.Order;
-import com.huazie.fleaframework.common.exception.CommonException;
+import com.huazie.fleaframework.common.exceptions.CommonException;
 import com.huazie.fleaframework.db.jpa.service.interfaces.IAbstractFleaJPASV;
 
 /**

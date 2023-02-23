@@ -30,4 +30,8 @@
 
     <tx:annotation-driven transaction-manager="fleaJpaTransactionManager"/>
 
+    <bean id="order" class="com.huazie.fleadbtest.jpa.split.entity.Order">
+        <property name="orderId" value="111"/>
+    </bean>
+
 </beans>

@@ -9,12 +9,14 @@ import com.huazie.fleadbtest.jpa.split.service.interfaces.IOldOrderAttrSV;
 import com.huazie.fleadbtest.jpa.split.service.interfaces.IOldOrderSV;
 import com.huazie.fleadbtest.jpa.split.service.interfaces.IOrderAttrSV;
 import com.huazie.fleadbtest.jpa.split.service.interfaces.IOrderSV;
-import com.huazie.fleaframework.common.exception.CommonException;
+import com.huazie.fleaframework.common.exceptions.CommonException;
 import com.huazie.fleaframework.common.util.DateUtils;
 import com.huazie.fleaframework.common.util.ObjectUtils;
 import com.huazie.fleaframework.db.jpa.transaction.FleaTransactional;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
 /**
@@ -32,6 +34,20 @@ public class FleaOrderModuleSVImpl implements IFleaOrderModuleSV {
     private IOldOrderSV oldOrderSV;
 
     private IOldOrderAttrSV oldOrderAttrSV;
+
+    public FleaOrderModuleSVImpl() {
+        System.out.println("constructor");
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("init");
+    }
+
+    @PreDestroy
+    public void destory() {
+        System.out.println("destory");
+    }
 
     @Resource(name = "orderSV")
     public void setOrderSV(IOrderSV orderSV) {

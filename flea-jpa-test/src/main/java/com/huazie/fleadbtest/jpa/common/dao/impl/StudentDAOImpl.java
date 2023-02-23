@@ -3,7 +3,7 @@ package com.huazie.fleadbtest.jpa.common.dao.impl;
 import com.huazie.fleadbtest.jpa.common.FleaJpaDAOImpl;
 import com.huazie.fleadbtest.jpa.common.dao.interfaces.IStudentDAO;
 import com.huazie.fleadbtest.jpa.common.entity.Student;
-import com.huazie.fleaframework.common.exception.CommonException;
+import com.huazie.fleaframework.common.exceptions.CommonException;
 import com.huazie.fleaframework.common.util.StringUtils;
 import com.huazie.fleaframework.db.jpa.common.FleaJPAQuery;
 import org.springframework.stereotype.Repository;

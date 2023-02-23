@@ -1,7 +1,7 @@
 package com.huazie.fleadbtest.jpa.common.service.interfaces;
 
 import com.huazie.fleadbtest.jpa.common.entity.Student;
-import com.huazie.fleaframework.common.exception.CommonException;
+import com.huazie.fleaframework.common.exceptions.CommonException;
 import com.huazie.fleaframework.db.jpa.service.interfaces.IAbstractFleaJPASV;
 
 import java.util.List;

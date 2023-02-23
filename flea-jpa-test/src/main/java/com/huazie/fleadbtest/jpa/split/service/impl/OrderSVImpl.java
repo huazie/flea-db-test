@@ -3,7 +3,7 @@ package com.huazie.fleadbtest.jpa.split.service.impl;
 import com.huazie.fleadbtest.jpa.split.dao.interfaces.IOrderDAO;
 import com.huazie.fleadbtest.jpa.split.entity.Order;
 import com.huazie.fleadbtest.jpa.split.service.interfaces.IOrderSV;
-import com.huazie.fleaframework.common.exception.CommonException;
+import com.huazie.fleaframework.common.exceptions.CommonException;
 import com.huazie.fleaframework.common.util.CollectionUtils;
 import com.huazie.fleaframework.db.jpa.dao.interfaces.IAbstractFleaJPADAO;
 import com.huazie.fleaframework.db.jpa.service.impl.AbstractFleaJPASVImpl;

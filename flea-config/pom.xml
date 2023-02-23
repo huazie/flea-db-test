@@ -14,13 +14,19 @@
 
     <!-- 添加这个只是为了applicationContext.xml中内容不报错
      打包时需要将这里注释掉-->
-    <dependencies>
-        <dependency>
-            <groupId>com.huazie.fleadbtest</groupId>
-            <artifactId>flea-mybatis-plus-test</artifactId>
-            <version>${project.parent.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+    <!--<dependencies>-->
+        <!--<dependency>-->
+            <!--<groupId>com.huazie.fleadbtest</groupId>-->
+            <!--<artifactId>flea-jpa-test</artifactId>-->
+            <!--<version>${project.parent.version}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.huazie.fleadbtest</groupId>-->
+            <!--<artifactId>flea-mybatis-plus-test</artifactId>-->
+            <!--<version>${project.parent.version}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+    <!--</dependencies>-->
 
 </project>

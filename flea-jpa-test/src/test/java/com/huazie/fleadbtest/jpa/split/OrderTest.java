@@ -1,6 +1,7 @@
 package com.huazie.fleadbtest.jpa.split;
 
 import com.huazie.fleadbtest.jpa.module.order.service.interfaces.IFleaOrderModuleSV;
+import com.huazie.fleadbtest.jpa.split.entity.OldOrder;
 import com.huazie.fleadbtest.jpa.split.entity.Order;
 import com.huazie.fleadbtest.jpa.split.service.interfaces.IOrderSV;
 import com.huazie.fleaframework.common.FleaApplicationContext;
@@ -40,6 +41,20 @@ public class OrderTest {
 
     @Resource(name = "fleaOrderModuleSV")
     private IFleaOrderModuleSV fleaOrderModuleSV;
+
+    @Resource(name = "order")
+    private OldOrder order;
+
+    @Test
+    public void testBean() {
+        // 演示不同文件中 ，添加相同id的bean
+        LOGGER.debug("ORDER = {}", order);
+    }
+
+    @Test
+    public void testJavaxAnnotation() {
+        System.out.println(fleaOrderModuleSV);
+    }
 
     @Test
     public void testEntityManager() throws Exception {

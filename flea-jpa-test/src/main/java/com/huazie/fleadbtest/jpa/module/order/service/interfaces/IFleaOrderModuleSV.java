@@ -1,6 +1,6 @@
 package com.huazie.fleadbtest.jpa.module.order.service.interfaces;
 
-import com.huazie.fleaframework.common.exception.CommonException;
+import com.huazie.fleaframework.common.exceptions.CommonException;
 
 /**
  * 订单模块服务接口类

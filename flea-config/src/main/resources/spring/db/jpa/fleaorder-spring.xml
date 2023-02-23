@@ -78,4 +78,7 @@
 
     <tx:annotation-driven transaction-manager="fleaOrderTransactionManager2"/>
 
+    <bean id="order" class="com.huazie.fleadbtest.jpa.split.entity.OldOrder">
+        <property name="orderId" value="222"/>
+    </bean>
 </beans>
