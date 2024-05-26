@@ -17,3 +17,5 @@
     > fleaorder1.sql
     
     > fleaorder2.sql
+    
+3. 注意 applicationContext.xml 中，不同测试场景注释不同内容

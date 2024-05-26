@@ -113,5 +113,6 @@
         <module>flea-jpa-test</module>
         <module>flea-mybatis-test</module>
         <module>flea-mybatis-plus-test</module>
+        <module>flea-jdbc-test</module>
     </modules>
 </project>
