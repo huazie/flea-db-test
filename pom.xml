@@ -17,6 +17,7 @@
         <mybatis.version>3.5.9</mybatis.version>
         <mybatis-plus.version>3.5.1</mybatis-plus.version>
         <fleaframework.version>2.0.0</fleaframework.version>
+        <spring.version>5.3.9</spring.version>
     </properties>
 
     <build>
@@ -49,6 +50,15 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
+            </dependency>
+
+            <!-- Spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <!-- FLEA FRAMEWORK -->
