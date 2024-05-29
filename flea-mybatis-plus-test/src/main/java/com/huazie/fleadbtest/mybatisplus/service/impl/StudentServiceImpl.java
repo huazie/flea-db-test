@@ -28,4 +28,27 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
         Cursor<Student> cursor = baseMapper.scan(limit);
         cursor.forEach(student -> LOGGER.debug("Student = {}", student));
     }
+
+    @Override
+    @Transactional("dataSourceTransactionManager")
+    public void service() throws RuntimeException {
+        Student student = new Student();
+        student.setStuName("李白");
+        student.setStuAge(25);
+        student.setStuSex(1);
+        student.setStuState(1);
+
+        baseMapper.insert(student);
+
+        student.setStuState(0);
+
+        baseMapper.updateById(student);
+
+        //throwEx();
+    }
+
+    private void throwEx() throws RuntimeException {
+        throw new RuntimeException("Test Exception");
+    }
+
 }

@@ -30,4 +30,9 @@ public class StudentServiceSpringTest {
         studentService.scan(10);
     }
 
+    @Test
+    public void testSpringMybatisPlusTransaction() throws RuntimeException {
+        studentService.service();
+    }
+
 }

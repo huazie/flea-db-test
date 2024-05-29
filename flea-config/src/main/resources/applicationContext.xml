@@ -16,15 +16,15 @@
 
     <!-- 导入JDBC相关的Bean配置
         注：运行flea-jpa-test和flea-mybatis-plus-test的用例，请注释这里 -->
-    <import resource="spring/db/jdbc/fleajpatest-jdbc-spring.xml"/>
+    <!--<import resource="spring/db/jdbc/fleajpatest-jdbc-spring.xml"/>-->
 
     <!-- 构建JPA实体工厂类所需要的Bean，固定
         注：运行flea-jdbc-test和flea-mybatis-plus-test的用例，请注释这里 -->
-    <import resource="spring/db/jpa/fleajpabeans-spring.xml"/>
+    <!--<import resource="spring/db/jpa/fleajpabeans-spring.xml"/>-->
 
     <!-- 持久化单元【fleajpa】对应的JPA相关Bean配置
         注：运行flea-jdbc-test和flea-mybatis-plus-test的用例，请注释这里 -->
-    <import resource="spring/db/jpa/fleajpa-spring.xml"/>
+    <!--<import resource="spring/db/jpa/fleajpa-spring.xml"/>-->
 
     <!-- 持久化单元【fleaorder，fleaorder1，fleaorder2】对应的JPA相关Bean配置
      注：运行flea-jdbc-test和flea-mybatis-plus-test的用例，请注释这里-->
@@ -37,6 +37,6 @@
 
     <!-- 数据源【fleajpatest】对应的MyBatis相关Bean配置
         注：运行flea-jpa-test和flea-jdbc-test的用例，请注释这里 -->
-    <!--<import resource="spring/db/mybatis/fleajpatest-spring.xml"/>-->
+    <import resource="spring/db/mybatis/fleajpatest-spring.xml"/>
 
 </beans>

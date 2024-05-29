@@ -19,4 +19,6 @@ public interface IStudentService extends IService<Student> {
      * @since 2.0.0
      */
     void scan(int limit);
+
+    void service() throws RuntimeException;
 }
