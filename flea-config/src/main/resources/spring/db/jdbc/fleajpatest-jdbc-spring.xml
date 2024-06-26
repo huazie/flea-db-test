@@ -19,7 +19,7 @@
         <property name="dataSource" ref="jdbcDataSource"/>
     </bean>
 
-    <!-- 配置事物管理器 -->
+    <!-- 配置事务管理器 -->
     <bean id="jdbcTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="jdbcDataSource" />
     </bean>

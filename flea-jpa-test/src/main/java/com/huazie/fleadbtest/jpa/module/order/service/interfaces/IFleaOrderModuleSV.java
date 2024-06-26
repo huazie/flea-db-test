@@ -12,7 +12,7 @@ import com.huazie.fleaframework.common.exceptions.CommonException;
 public interface IFleaOrderModuleSV {
 
     /**
-     * 测试订单事物
+     * 测试订单事务
      *
      * @param orderId 订单编号
      * @throws CommonException 通用异常
@@ -20,7 +20,7 @@ public interface IFleaOrderModuleSV {
     void orderTransaction(Long orderId) throws CommonException;
 
     /**
-     * 测试旧订单事物
+     * 测试旧订单事务
      *
      * @param orderId 订单编号
      * @throws CommonException 通用异常

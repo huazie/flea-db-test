@@ -126,13 +126,13 @@ public class StudentJDBCTest {
             // 提交事务
             conn.commit();
 
-            LOGGER.debug("提交事物");
+            LOGGER.debug("提交事务");
         } catch (SQLException e) {
             if (null != conn) {
                 try {
                     // 回滚事务
                     conn.rollback();
-                    LOGGER.debug("回滚事物");
+                    LOGGER.debug("回滚事务");
                 } catch (SQLException ex) {
                 }
             }

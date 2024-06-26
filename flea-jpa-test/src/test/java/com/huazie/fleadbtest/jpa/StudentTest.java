@@ -69,7 +69,7 @@ public class StudentTest {
     @Test
     public void testStudentDelete1() throws CommonException {
         long stuId = 1L;
-        // 在事物中的查询，然后删除
+        // 在事务中的查询，然后删除
         studentSV.removeStudentByStuId1(stuId);
         // 最后再根据主键查询学生信息
         Student student = studentSV.query(stuId);
@@ -82,7 +82,7 @@ public class StudentTest {
         // 根据主键查询学生信息
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("stuId", stuId);
-        // 当前无事物的查询
+        // 当前无事务的查询
         List<Student> studentList = studentSV.query(paramMap);
         if (CollectionUtils.isNotEmpty(studentList)) {
             Student student = studentList.get(0);

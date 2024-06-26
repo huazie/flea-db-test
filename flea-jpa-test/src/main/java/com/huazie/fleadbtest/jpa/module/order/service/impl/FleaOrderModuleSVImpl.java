@@ -76,7 +76,7 @@ public class FleaOrderModuleSVImpl implements IFleaOrderModuleSV {
         Order order = orderSV.getOrderById(orderId);
         if (ObjectUtils.isNotEmpty(order)) {
             // 更新订单
-            order.setOrderName("修改订单【事物】");
+            order.setOrderName("修改订单【事务】");
             order.setOrderPrice(10000L);
             order.setOrderState(2);
             orderSV.update(order);
@@ -102,7 +102,7 @@ public class FleaOrderModuleSVImpl implements IFleaOrderModuleSV {
         OldOrder oldOrder = oldOrderSV.query(orderId, new OldOrder());
         if (ObjectUtils.isNotEmpty(oldOrder)) {
             // 更新旧订单
-            oldOrder.setOrderName("修改旧订单【事物】");
+            oldOrder.setOrderName("修改旧订单【事务】");
             oldOrder.setOrderPrice(20000L);
             oldOrder.setOrderState(3);
             oldOrderSV.update(oldOrder);
