@@ -96,6 +96,32 @@ public class FleaOrderModuleSVImpl implements IFleaOrderModuleSV {
     }
 
     @Override
+    @FleaTransactional(value = "fleaOrderTransactionManager", unitName = "fleaorder", seq = "'SEQ=' + #orderId")
+    public void orderTransactionNew(Long orderId) throws CommonException {
+        // 查询订单
+        Order order = orderSV.getOrderById(orderId);
+        if (ObjectUtils.isNotEmpty(order)) {
+            // 更新订单
+            order.setOrderName("修改订单【事物】新");
+            order.setOrderPrice(30000L);
+            order.setOrderState(3);
+            orderSV.update(order);
+
+            // 新增订单属性
+            OrderAttr orderAttr = new OrderAttr();
+            orderAttr.setOrderId(orderId);
+            orderAttr.setAttrCode("order1");
+            orderAttr.setAttrValue("transaction1");
+            orderAttr.setCreateDate(DateUtils.getCurrentTime());
+            orderAttr.setRemarks("test1");
+            orderAttrSV.save(orderAttr);
+
+            // 抛出自定义的异常
+            //ExceptionUtils.throwFleaException(FleaException.class, "主动抛出异常");
+        }
+    }
+
+    @Override
     @FleaTransactional(value = "fleaOrderTransactionManager", unitName = "fleaorder")
     public void oldOrderTransaction(Long orderId) throws CommonException {
         // 查询订单

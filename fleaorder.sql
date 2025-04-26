@@ -57,7 +57,7 @@ CREATE TABLE `old_order_attr` (
   `order_id` int(11) NOT NULL COMMENT '订单编号',
   `attr_code` varchar(50) NOT NULL COMMENT '属性码',
   `attr_value` varchar(3000) NOT NULL COMMENT '属性值',
-  `create_date` date NOT NULL COMMENT '创建时间',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
   `remarks` varchar(4000) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`attr_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -92,7 +92,7 @@ CREATE TABLE `order_attr` (
   `order_id` int(11) NOT NULL COMMENT '订单编号',
   `attr_code` varchar(50) NOT NULL COMMENT '属性码',
   `attr_value` varchar(3000) NOT NULL COMMENT '属性值',
-  `create_date` date NOT NULL COMMENT '创建时间',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
   `remarks` varchar(4000) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`attr_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

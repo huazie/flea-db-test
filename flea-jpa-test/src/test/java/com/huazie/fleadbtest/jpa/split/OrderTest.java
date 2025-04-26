@@ -153,8 +153,16 @@ public class OrderTest {
         long orderId = 1000000000L;
 
         // 设置分库序列值
-        FleaLibUtil.setSplitLibSeqValue("SEQ", orderId);
+        FleaLibUtil.setSplitLibSequence("SEQ", orderId);
 
         fleaOrderModuleSV.orderTransaction(orderId);
+    }
+
+    @Test
+    public void testTransactionNew() throws Exception {
+
+        long orderId = 1000000000L;
+
+        fleaOrderModuleSV.orderTransactionNew(orderId);
     }
 }

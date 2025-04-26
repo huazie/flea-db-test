@@ -20,6 +20,14 @@ public interface IFleaOrderModuleSV {
     void orderTransaction(Long orderId) throws CommonException;
 
     /**
+     * 测试订单事务new
+     *
+     * @param orderId 订单编号
+     * @throws CommonException 通用异常
+     */
+    void orderTransactionNew(Long orderId) throws CommonException;
+
+    /**
      * 测试旧订单事务
      *
      * @param orderId 订单编号
