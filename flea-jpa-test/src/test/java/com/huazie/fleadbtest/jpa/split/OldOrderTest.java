@@ -38,7 +38,7 @@ public class OldOrderTest {
     private IFleaOrderModuleSV fleaOrderModuleSV;
 
     @Test
-    public void testInsertOldOrder() throws Exception {
+    public void testInsertOldOrder() {
 
         OldOrder oldOrder = new OldOrder();
         oldOrder.setOrderName("测试旧订单1");
@@ -50,20 +50,20 @@ public class OldOrderTest {
         oldOrder.setOrderId(orderId);
 
         // 设置分库序列值
-        FleaLibUtil.setSplitLibSeqValue("SEQ", orderId);
+        FleaLibUtil.setSplitLibSequence("SEQ", orderId);
 
         oldOrderSV.save(oldOrder);
     }
 
     @Test
-    public void testQueryOldOrder() throws Exception {
+    public void testQueryOldOrder() {
 
         long orderId = 1000000000L;
         OldOrder oldOrder = new OldOrder();
         //oldOrder.setOrderId(orderId);
 
         // 设置分库序列值
-        FleaLibUtil.setSplitLibSeqValue("SEQ", orderId);
+        FleaLibUtil.setSplitLibSequence("SEQ", orderId);
 
         // 分库场景，需要实体类，为了后续从中获取默认库名
         oldOrder = oldOrderSV.query(orderId, oldOrder);
@@ -72,12 +72,12 @@ public class OldOrderTest {
     }
 
     @Test
-    public void testUpdateOldOrder() throws Exception {
+    public void testUpdateOldOrder() {
 
         long orderId = 1000000000L;
 
         // 设置分库序列值
-        FleaLibUtil.setSplitLibSeqValue("SEQ", orderId);
+        FleaLibUtil.setSplitLibSequence("SEQ", orderId);
 
         OldOrder oldOrder = new OldOrder();
         oldOrder.setOrderId(orderId);
@@ -107,12 +107,12 @@ public class OldOrderTest {
     }
 
     @Test
-    public void testDeleteOldOrder() throws Exception {
+    public void testDeleteOldOrder() {
 
         long orderId = 1000000000L;
 
         // 设置分库序列值
-        FleaLibUtil.setSplitLibSeqValue("SEQ", orderId);
+        FleaLibUtil.setSplitLibSequence("SEQ", orderId);
 
         OldOrder oldOrder = new OldOrder();
         oldOrder.setOrderId(orderId);
@@ -133,12 +133,12 @@ public class OldOrderTest {
     }
 
     @Test
-    public void testTransaction() throws Exception {
+    public void testTransaction() {
 
         Long orderId = 1000000001L;
 
         // 设置分库序列值
-        FleaLibUtil.setSplitLibSeqValue("SEQ", orderId);
+        FleaLibUtil.setSplitLibSequence("SEQ", orderId);
 
         fleaOrderModuleSV.oldOrderTransaction(orderId);
     }

@@ -1,6 +1,6 @@
 package com.huazie.fleadbtest.jpa.split.dao.impl;
 
-import com.huazie.fleadbtest.jpa.split.FleaOrderDAOImpl;
+import com.huazie.fleadbtest.jpa.split.FleaOrderJPADAOImpl;
 import com.huazie.fleadbtest.jpa.split.dao.interfaces.IOldOrderAttrDAO;
 import com.huazie.fleadbtest.jpa.split.entity.OldOrderAttr;
 import org.springframework.stereotype.Repository;
@@ -13,5 +13,5 @@ import org.springframework.stereotype.Repository;
  * @since 2.0.0
  */
 @Repository("oldOrderAttrDAO")
-public class OldOrderAttrDAOImpl extends FleaOrderDAOImpl<OldOrderAttr> implements IOldOrderAttrDAO {
+public class OldOrderAttrDAOImpl extends FleaOrderJPADAOImpl<OldOrderAttr> implements IOldOrderAttrDAO {
 }

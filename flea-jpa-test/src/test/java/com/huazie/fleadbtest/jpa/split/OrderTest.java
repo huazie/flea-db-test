@@ -57,7 +57,7 @@ public class OrderTest {
     }
 
     @Test
-    public void testEntityManager() throws Exception {
+    public void testEntityManager() {
         EntityManager entityManager = FleaEntityManager.getEntityManager("fleaorder2", "fleaOrderTransactionManager2");
         LOGGER.debug("EntityManager={}", entityManager);
     }
@@ -69,7 +69,7 @@ public class OrderTest {
     }
 
     @Test
-    public void testInsertOrder() throws Exception {
+    public void testInsertOrder() {
 
         Order order = new Order();
         order.setOrderName("测试订单");
@@ -84,7 +84,17 @@ public class OrderTest {
     }
 
     @Test
-    public void testQueryOrder() throws Exception {
+    public void testQueryOrder() {
+
+        long orderId = 1000000000L;
+
+        Order order = orderSV.query(orderId);
+
+        LOGGER.debug("Order = {}", order);
+    }
+
+    @Test
+    public void testQueryOrder1() {
 
         long orderId = 1000000000L;
         Order order = new Order();
@@ -96,7 +106,7 @@ public class OrderTest {
     }
 
     @Test
-    public void testUpdateOrder() throws Exception {
+    public void testUpdateOrder() {
 
         long orderId = 1000000000L;
         Order order = new Order();
@@ -127,7 +137,7 @@ public class OrderTest {
     }
 
     @Test
-    public void testDeleteOrder() throws Exception {
+    public void testDeleteOrder() {
         long orderId = 1000000000L;
         Order order = new Order();
         order.setOrderId(orderId);
@@ -148,7 +158,15 @@ public class OrderTest {
     }
 
     @Test
-    public void testTransaction() throws Exception {
+    public void testDelete() {
+
+        long orderId = 1000000000L;
+
+        orderSV.remove(orderId);
+    }
+
+    @Test
+    public void testTransaction() {
 
         long orderId = 1000000000L;
 
@@ -159,7 +177,7 @@ public class OrderTest {
     }
 
     @Test
-    public void testTransactionNew() throws Exception {
+    public void testTransactionNew() {
 
         long orderId = 1000000000L;
 
